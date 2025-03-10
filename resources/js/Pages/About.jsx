@@ -1,13 +1,12 @@
-"use client"
-
-import { useState } from "react"
+import React, { useState } from "react"
 import { Badge } from "@/Components/ui/badge"
 import { Button } from "@/Components/ui/button"
 import { Card } from "@/Components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/Components/ui/tabs"
 import { Trophy, Calendar, Users, Mail, Github, Twitter,Youtube, Gamepad2, Code, Palette, Music, Heart } from "lucide-react"
+import Layout from "@/Components/layout/Layout"
 
-export default function About() {
+const About = () => {
   const [activeTeamMember, setActiveTeamMember] = useState("pixel-master")
 
   return (
@@ -488,4 +487,5 @@ export default function About() {
     </div>
   )
 }
-
+About.layout = (page) => <Layout children={page} />
+export default  About

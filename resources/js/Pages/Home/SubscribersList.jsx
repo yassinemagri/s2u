@@ -1,32 +1,16 @@
-"use client"
-
 import { useState, useEffect } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Search, Youtube, ExternalLink } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Link } from "@inertiajs/react"
 
 
-export default function SubscribersList() {
+export default function SubscribersList({subscriberss = []}) {
   const [subscribers, setSubscribers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("")
   const [filteredSubscribers, setFilteredSubscribers] = useState(subscribers)
 
-  useEffect(() => {
-    async function fetchSubscribers() {
-      try {
-          const response = await fetch(`/api/subs`);
-          const data = await response.json();
-          setSubscribers(data.subs);
-      } catch (error) {
-          console.error("Error fetching subscribers:", error);
-      }
-  }
-  
-  fetchSubscribers();
-  
-  }, []);
   useEffect(() => {
     const results = subscribers.filter(
       (sub) =>
@@ -101,7 +85,7 @@ export default function SubscribersList() {
                         className="font-Pixel bg-[#00FF00] hover:bg-[#00FF00]/90 text-black border-none rounded-none"
                         asChild
                       >
-                        <Link to={`/subs/${subscriber.id}`} >
+                        <Link href={`/subs/${subscriber.id}`} >
                           <ExternalLink className="h-4 w-4 mr-2" />
                           Open
                         </Link>
