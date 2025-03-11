@@ -5,7 +5,7 @@ import VideoTuto from "./VideoTuto";
 import FAQSection from "./FAQSection";
 import SubscribersList from "./SubscribersList";
 
-const Index = ({ bg_img }) => {
+const Index = () => {
     return (
         <>
             <div className="font-Pixel text-white  container mx-auto px-20 py-12 capitalize">
@@ -13,7 +13,6 @@ const Index = ({ bg_img }) => {
                     {/* Left Column */}
                     <Instructions />
                     {/* Right Column */}
-
                     <VideoTuto />
                 </div>
             </div>
