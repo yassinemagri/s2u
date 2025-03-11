@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="flex items-center gap-1 text-xs  text-primary/70">
             <span>design & Dev</span>
             <Heart className="h-3 w-3 text-destructive" />
-            <span>by Yassine Magri</span>
+            <span>by Yassine Magri - Badr Noukh</span>
           </div>
 
           <div className="flex gap-4">
