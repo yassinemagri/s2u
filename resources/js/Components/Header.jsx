@@ -57,7 +57,13 @@ export default function Header() {
 
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
-                                <Button className="cursor-pointer border-primary text-primary hover:bg-primary hover:text-primary-foreground transition duration-300 ease-in-out" variant="outline" size="sm">join us</Button>
+                                <Button
+                                    className="cursor-pointer border-primary text-primary hover:bg-primary hover:text-primary-foreground transition duration-300 ease-in-out"
+                                    variant="outline"
+                                    size="sm"
+                                >
+                                    join us
+                                </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="w-56">
                                 <DropdownMenuSeparator />
@@ -65,12 +71,14 @@ export default function Header() {
                                     value={position}
                                     onValueChange={setPosition}
                                 >
-                                    <DropdownMenuRadioItem value="top">
-                                        {" "}
-                                        {auth.user ? (
-                                            auth.user.username
-                                        ) : (
-                                            <li className="list-none cursor-pointer"> 
+                                    {" "}
+                                    {auth.user ? (
+                                        <DropdownMenuRadioItem value="top">
+                                            {auth.user.username}
+                                        </DropdownMenuRadioItem>
+                                    ) : (
+                                        <DropdownMenuRadioItem value="top">
+                                            <li className="list-none cursor-pointer">
                                                 <Link
                                                     href="/login"
                                                     className="text-primary hover:text-primary/80 transition-colors"
@@ -78,26 +86,26 @@ export default function Header() {
                                                     LOGIN
                                                 </Link>
                                             </li>
-                                        )}
-                                    </DropdownMenuRadioItem>
-
-                                    <DropdownMenuRadioItem value="right">
-                                        {auth.user && (
+                                        </DropdownMenuRadioItem>
+                                    )}
+                                    {auth.user && (
+                                        <DropdownMenuRadioItem value="right">
                                             <Button
-                                            className='cursor-pointer'
+                                                className="cursor-pointer"
                                                 onClick={() =>
                                                     router.delete("/logout")
                                                 }
                                             >
                                                 Log out
                                             </Button>
-                                        )}
-                                    </DropdownMenuRadioItem>
-
-                                    <DropdownMenuRadioItem value="bottom">
-                                        {auth.user ? (
-                                            auth.user.username
-                                        ) : (
+                                        </DropdownMenuRadioItem>
+                                    )}
+                                    {auth.user ? (
+                                        <DropdownMenuRadioItem value="top">
+                                            {auth.user.username}
+                                        </DropdownMenuRadioItem>
+                                    ) : (
+                                        <DropdownMenuRadioItem value="bottom">
                                             <li className="list-none cursor-pointer">
                                                 <Link
                                                     href="/register"
@@ -106,8 +114,8 @@ export default function Header() {
                                                     REGISTER
                                                 </Link>
                                             </li>
-                                        )}
-                                    </DropdownMenuRadioItem>
+                                        </DropdownMenuRadioItem>
+                                    )}
                                 </DropdownMenuRadioGroup>
                             </DropdownMenuContent>
                         </DropdownMenu>
