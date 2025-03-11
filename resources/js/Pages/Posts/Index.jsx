@@ -1,9 +1,13 @@
 import React from 'react'
+import Create from './Create'
 
 const Index = () => {
   return (
-    <div>Index</div>
+    <>
+    <Create />
+    </>
   )
 }
 
+Index.layout = (page) => <Layout children={page} />;
 export default Index

@@ -205,5 +205,5 @@ const NotFoundPage= ()=> {
     </div>
   );
 }
-NotFoundPage.layout = (page) => <Layout children={page} />;
+// NotFoundPage.layout = (page) => <Layout children={page} />;
 export default NotFoundPage

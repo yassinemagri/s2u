@@ -11,6 +11,9 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return Inertia::render('About');
 });
+Route::fallback(function () {
+    return Inertia::render('NotFound')->toResponse(request())->setStatusCode(404);
+});
 Route::get('/posts',[PostController::class,'index']);
 Route::get('/post/{post}',[PostController::class,'show']);
 Route::get('/post/create',[PostController::class,'create'])->middleware('auth');
