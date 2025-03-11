@@ -16,7 +16,6 @@ import {
     Gamepad2,
 } from "lucide-react";
 import { useForm } from "@inertiajs/react";
-import { P } from "public/build/assets/index-CkXmy0EM";
 
 const Create = () => {
     const canvasRef = useRef(null);
