@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/Components/ui/button";
 import { Card } from "@/Components/ui/card";
-import { Home, RotateCcw, Gamepad2, Youtube } from "lucide-react";
+import { Home, RotateCcw, Youtube } from "lucide-react";
 import { Link } from "@inertiajs/react";
 
-export default function NotFoundPage() {
+const NotFoundPage= ()=> {
   const [countdown, setCountdown] = useState(5);
   const [glitchEffect, setGlitchEffect] = useState(false);
 
@@ -205,3 +205,5 @@ export default function NotFoundPage() {
     </div>
   );
 }
+NotFoundPage.layout = (page) => <Layout children={page} />;
+export default NotFoundPage

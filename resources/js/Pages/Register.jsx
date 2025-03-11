@@ -29,7 +29,7 @@ const Register = () => {
   
   // Generate pixel art elements for background
   useEffect(() => {
-    const colors = ['#00FFFF', '#00CCFF', '#0088FF', '#0044FF']
+    const colors = ['#00FF00', '#00CCFF', '#0088FF', '#0044FF']
     const newPixels = Array.from({ length: 50 }).map(() => ({
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -159,20 +159,20 @@ const Register = () => {
         {[0, 1, 2, 3].map((char) => (
           <div 
             key={char}
-            className={`w-12 h-12 border-2 ${selectedCharacter === char ? 'border-[#00FFFF]' : 'border-primary/30'} flex items-center justify-center transition-all duration-300`}
+            className={`w-12 h-12 border-2 ${selectedCharacter === char ? 'border-[#00FF00]' : 'border-primary/30'} flex items-center justify-center transition-all duration-300`}
             style={{ 
-              boxShadow: selectedCharacter === char ? '0 0 10px #00FFFF' : 'none',
+              boxShadow: selectedCharacter === char ? '0 0 10px #00FF00' : 'none',
               opacity: selectedCharacter === char ? 1 : 0.5
             }}
           >
-            <div className="w-8 h-8 bg-current" style={{ color: '#00FFFF', clipPath: getCharacterShape(char) }}></div>
+            <div className="w-8 h-8 bg-current" style={{ color: '#00FF00', clipPath: getCharacterShape(char) }}></div>
           </div>
         ))}
       </div>
       
       {/* Stats UI */}
       <div className="absolute right-4 top-1/2 transform -translate-y-1/2 hidden md:block z-10">
-        <div className="font-mono text-xs text-[#00FFFF]/70 space-y-2">
+        <div className=" text-xs text-[#00FF00]/70 space-y-2">
           <div>STR: 10</div>
           <div>DEX: 15</div>
           <div>INT: 12</div>
@@ -181,14 +181,14 @@ const Register = () => {
       </div>
       
       {/* UI Frame */}
-      <div className="absolute top-0 left-0 w-full h-8 bg-[#00FFFF]/10 z-10"></div>
-      <div className="absolute bottom-0 left-0 w-full h-8 bg-[#00FFFF]/10 z-10"></div>
+      <div className="absolute top-0 left-0 w-full h-8 bg-[#00FF00]/10 z-10"></div>
+      <div className="absolute bottom-0 left-0 w-full h-8 bg-[#00FF00]/10 z-10"></div>
       <div className="absolute top-8 left-8 flex space-x-2 opacity-30 z-10">
-        <div className="w-3 h-3 rounded-full bg-[#00FFFF]"></div>
-        <div className="w-3 h-3 rounded-full bg-[#00FFFF]/70"></div>
-        <div className="w-3 h-3 rounded-full bg-[#00FFFF]/40"></div>
+        <div className="w-3 h-3 rounded-full bg-[#00FF00]"></div>
+        <div className="w-3 h-3 rounded-full bg-[#00FF00]/70"></div>
+        <div className="w-3 h-3 rounded-full bg-[#00FF00]/40"></div>
       </div>
-      <div className="absolute top-8 right-8 font-mono text-xs text-[#00FFFF]/70 z-10">
+      <div className="absolute top-8 right-8  text-xs text-[#00FF00]/70 z-10">
         CHARACTER CREATION v2.1.0
       </div>
       
@@ -197,16 +197,16 @@ const Register = () => {
           <div className="flex justify-center">
             <Badge 
               variant="outline" 
-              className="font-mono text-[#00FFFF] border-2 border-[#00FFFF]/20 px-4 py-2 rounded-none"
-              style={{ textShadow: "1px 1px 0px #00FFFF" }}
+              className=" text-[#00FF00] border-2 border-[#00FF00]/20 px-4 py-2 rounded-none"
+              style={{ textShadow: "1px 1px 0px #00FF00" }}
             >
               NEW PLAYER
             </Badge>
           </div>
           
           <h1 
-            className="font-mono text-3xl md:text-4xl font-bold text-primary relative"
-            style={{ textShadow: "3px 3px 0px #00FFFF" }}
+            className=" text-3xl md:text-4xl font-bold text-primary relative"
+            style={{ textShadow: "3px 3px 0px #00FF00" }}
           >
             Create Your Character
             {glitchEffect && (
@@ -216,7 +216,7 @@ const Register = () => {
             )}
           </h1>
           
-          <p className="font-mono text-primary/70">
+          <p className=" text-primary/70">
             Join our community of pixel art enthusiasts
           </p>
         </div>
@@ -224,16 +224,16 @@ const Register = () => {
         <div className="relative">
           {/* Decorative Pixels */}
           <div className="absolute -top-4 -left-4 w-8 h-8 border-4 border-primary bg-transparent"></div>
-          <div className="absolute -bottom-4 -right-4 w-8 h-8 border-4 border-[#00FFFF] bg-transparent"></div>
+          <div className="absolute -bottom-4 -right-4 w-8 h-8 border-4 border-[#00FF00] bg-transparent"></div>
           
           {/* CRT screen effect */}
-          <div className="absolute -inset-1 bg-gradient-to-br from-[#00FFFF]/5 to-transparent rounded-sm opacity-50 blur-sm"></div>
+          <div className="absolute -inset-1 bg-gradient-to-br from-[#00FF00]/5 to-transparent rounded-sm opacity-50 blur-sm"></div>
           
           <Card className={`rounded-none border-4 border-primary bg-background/90 backdrop-blur-sm p-6 ${glitchEffect ? 'translate-x-[1px] translate-y-[1px]' : ''} transition-transform duration-75`}
                 style={{ boxShadow: "8px 8px 0px 0px rgba(0,255,255,0.3)" }}>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="username" className="font-mono text-primary">
+                <Label htmlFor="username" className=" text-primary">
                   Username
                 </Label>
                 <div className="relative">
@@ -247,11 +247,11 @@ const Register = () => {
                     placeholder="Choose a username"
                     value={data.username}
                     onChange={e => setData('username', e.target.value)}
-                    className="font-mono pl-10 border-2 border-primary/50 focus:border-[#00FFFF] rounded-none"
+                    className=" pl-10 border-2 border-primary/50 focus:border-[#00FF00] rounded-none"
                   />
                 </div>
                 {errors.username && (
-                <div className="bg-red-500/10 border-2 border-red-500 p-3 font-mono text-sm text-red-500">
+                <div className="bg-red-500/10 border-2 border-red-500 p-3  text-sm text-red-500">
                   <div className="flex items-center gap-2">
                     <span>!</span>
                     <span>{errors.username}</span>
@@ -261,7 +261,7 @@ const Register = () => {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="email" className="font-mono text-primary">
+                <Label htmlFor="email" className=" text-primary">
                   Email
                 </Label>
                 <div className="relative">
@@ -275,11 +275,11 @@ const Register = () => {
                     placeholder="Enter your email"
                     value={data.email}
                     onChange={e => setData('email', e.target.value)}
-                    className="font-mono pl-10 border-2 border-primary/50 focus:border-[#00FFFF] rounded-none"
+                    className=" pl-10 border-2 border-primary/50 focus:border-[#00FF00] rounded-none"
                   />
                 </div>
                 {errors.email && (
-                <div className="bg-red-500/10 border-2 border-red-500 p-3 font-mono text-sm text-red-500">
+                <div className="bg-red-500/10 border-2 border-red-500 p-3  text-sm text-red-500">
                   <div className="flex items-center gap-2">
                     <span>!</span>
                     <span>{errors.email}</span>
@@ -289,7 +289,7 @@ const Register = () => {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="password" className="font-mono text-primary">
+                <Label htmlFor="password" className=" text-primary">
                   Password
                 </Label>
                 <div className="relative">
@@ -303,7 +303,7 @@ const Register = () => {
                     placeholder="Create a password"
                     value={data.password}
                     onChange={e => setData('password', e.target.value)}
-                    className="font-mono pl-10 border-2 border-primary/50 focus:border-[#00FFFF] rounded-none"
+                    className=" pl-10 border-2 border-primary/50 focus:border-[#00FF00] rounded-none"
                   />
                   <Button
                     type="button"
@@ -323,7 +323,7 @@ const Register = () => {
                   </Button>
                 </div>
                 {errors.password && (
-                <div className="bg-red-500/10 border-2 border-red-500 p-3 font-mono text-sm text-red-500">
+                <div className="bg-red-500/10 border-2 border-red-500 p-3  text-sm text-red-500">
                   <div className="flex items-center gap-2">
                     <span>!</span>
                     <span>{errors.password}</span>
@@ -333,7 +333,7 @@ const Register = () => {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword" className="font-mono text-primary">
+                <Label htmlFor="confirmPassword" className=" text-primary">
                   Confirm Password
                 </Label>
                 <div className="relative">
@@ -347,7 +347,7 @@ const Register = () => {
                     placeholder="Confirm your password"
                     value={data.password_confirmation}
                     onChange={e => setData('password_confirmation', e.target.value)}
-                    className="font-mono pl-10 border-2 border-primary/50 focus:border-[#00FFFF] rounded-none"
+                    className=" pl-10 border-2 border-primary/50 focus:border-[#00FF00] rounded-none"
                   />
                   <Button
                     type="button"
@@ -371,7 +371,7 @@ const Register = () => {
               <Button 
                 type="submit"
                 disabled={processing}
-                className="w-full font-mono bg-[#00FFFF] hover:bg-[#00FFFF]/90 text-black border-none rounded-none"
+                className="w-full  bg-[#00FF00] hover:bg-[#00FF00]/90 text-black border-none rounded-none"
                 style={{ 
                   boxShadow: "4px 4px 0px 0px rgba(0,255,255,0.3)",
                 }}
@@ -388,50 +388,33 @@ const Register = () => {
               
               <div className="relative flex items-center gap-4 py-2">
                 <Separator className="flex-1 bg-primary/20" />
-                <span className="font-mono text-xs text-primary/50">OR</span>
+                <span className=" text-xs text-primary/50">OR</span>
                 <Separator className="flex-1 bg-primary/20" />
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
-                <Button 
-                  type="button"
-                  variant="outline"
-                  className="font-mono border-2 border-primary/50 bg-background text-primary hover:bg-primary/10 rounded-none"
-                >
-                  <Github className="h-4 w-4 mr-2" />
-                  Github
-                </Button>
-                <Button 
-                  type="button"
-                  variant="outline"
-                  className="font-mono border-2 border-primary/50 bg-background text-primary hover:bg-primary/10 rounded-none"
-                >
-                  <Twitter className="h-4 w-4 mr-2" />
-                  Twitter
-                </Button>
-              </div>
-            </form>
-          </Card>
-        </div>
-        
-        <div className="text-center">
-          <p className="font-mono text-sm text-primary/70">
+              <div className="text-center">
+          <p className=" text-sm text-primary/70">
             Already have an account?{" "}
             <Link
               href="/login" 
-              className="text-[#00FFFF] hover:underline"
+              className="text-[#00FF00] hover:underline"
             >
               Login here
             </Link>
           </p>
         </div>
+            </form>
+          </Card>
+        </div>
+        
+       
       </div>
       
       {/* Decorative Game Elements */}
       <div className="absolute bottom-4 right-4 opacity-50 z-10">
-        <Youtube className="h-8 w-8 text-[#00FFFF]" />
+        <Youtube className="h-8 w-8 text-[#00FF00]" />
       </div>
-      <div className="absolute bottom-4 left-4 opacity-50 z-10 font-mono text-xs text-[#00FFFF]/70">
+      <div className="absolute bottom-4 left-4 opacity-50 z-10  text-xs text-[#00FF00]/70">
         PRESS A TO CONFIRM
       </div>
     </div>

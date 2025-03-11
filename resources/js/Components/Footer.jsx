@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <p className="text-xs  text-primary/70">
-            © {new Date().getFullYear()} Retro Pixel. All rights reserved.
+            © {new Date().getFullYear()} <span className="text-primary border-2 border-[#FF00FF]/20 px-4 py-1 rounded-none" style={{ textShadow: "1px 1px 0px #FF00FF" }}>S2U</span>. All rights reserved.
           </p>
 
           <div className="flex items-center gap-1 text-xs  text-primary/70">
