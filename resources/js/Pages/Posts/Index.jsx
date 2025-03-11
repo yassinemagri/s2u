@@ -4,9 +4,10 @@ import Create from './Create'
 const Index = () => {
   return (
     <>
-    <Create />
+    {/* <Create /> */}
     </>
   )
 }
 
+Index.layout = (page) => <Layout children={page} />;
 export default Index
