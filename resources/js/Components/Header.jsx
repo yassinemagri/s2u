@@ -4,7 +4,6 @@ import { Link , router, usePage } from "@inertiajs/react";
 
 export default function Header() {
   const {auth} = usePage().props;
-  console.log(auth)
   return (
     <header className="font-Pixel backdrop-blur-[10.4px] bg-[#ffffff14] border-b border-primary/20 py-4 capitalize">
       <div className="container mx-auto px-4 flex justify-between items-center">
