@@ -1,4 +1,3 @@
-"use client"
 import { useState, useEffect } from "react"
 import { Badge } from "@/Components/ui/badge"
 import { Button } from "@/Components/ui/button"
@@ -7,17 +6,16 @@ import { Input } from "@/Components/ui/input"
 import { Label } from "@/Components/ui/label"
 import { Separator } from "@/Components/ui/separator"
 import { Eye, EyeOff, Lock, Mail, Youtube, Github, Twitter } from "lucide-react"
-import { Link } from "@inertiajs/react"
+import { Link, useForm } from "@inertiajs/react"
+import Layout from "@/Components/layout/Layout"
 
 
-export default function LoginPage() {
+const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false)
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  })
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
+    const { data, setData, post, processing, errors } = useForm({
+      email: '',
+      password: '',
+    })
   const [glitchEffect, setGlitchEffect] = useState(false)
   const [stars, setStars] = useState([])
 
@@ -42,25 +40,10 @@ export default function LoginPage() {
     return () => clearInterval(glitchInterval)
   }, [])
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setError("")
-    setLoading(true)
-
-    // Simulate login
-    setTimeout(() => {
-      if (formData.email && formData.password) {
-        // router.push("/")
-      } else {
-        setError("Please fill in all fields")
-      }
-      setLoading(false)
-    }, 1500)
+    post('/login');
   }
 
   return (
@@ -156,14 +139,7 @@ export default function LoginPage() {
             style={{ boxShadow: "8px 8px 0px 0px rgba(255,0,255,0.3)" }}
           >
             <form onSubmit={handleSubmit} className="space-y-6">
-              {error && (
-                <div className="bg-red-500/10 border-2 border-red-500 p-3 font-mono text-sm text-red-500">
-                  <div className="flex items-center gap-2">
-                    <span>!</span>
-                    <span>{error}</span>
-                  </div>
-                </div>
-              )}
+              
 
               <div className="space-y-2">
                 <Label htmlFor="email" className="font-mono text-primary">
@@ -176,13 +152,21 @@ export default function LoginPage() {
                   <Input
                     id="email"
                     name="email"
-                    type="text"
+                    type="email"
                     placeholder="Enter your email or username"
-                    value={formData.email}
-                    onChange={handleChange}
+                    value={data.email}
+                    onChange={(e) => setData('email', e.target.value)}
                     className="font-mono pl-10 border-2 border-primary/50 focus:border-[#FF00FF] rounded-none"
                   />
                 </div>
+                {errors.email && (
+                <div className="bg-red-500/10 border-2 border-red-500 p-3 font-mono text-sm text-red-500">
+                  <div className="flex items-center gap-2">
+                    <span>!</span>
+                    <span>{errors.email}</span>
+                  </div>
+                </div>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -203,8 +187,8 @@ export default function LoginPage() {
                     name="password"
                     type={showPassword ? "text" : "password"}
                     placeholder="Enter your password"
-                    value={formData.password}
-                    onChange={handleChange}
+                    value={data.password}
+                    onChange={(e)=> setData('password', e.target.value)}
                     className="font-mono pl-10 border-2 border-primary/50 focus:border-[#FF00FF] rounded-none"
                   />
                   <Button
@@ -226,13 +210,13 @@ export default function LoginPage() {
 
               <Button
                 type="submit"
-                disabled={loading}
+                disabled={processing}
                 className="w-full font-mono bg-[#FF00FF] hover:bg-[#FF00FF]/90 text-white border-none rounded-none"
                 style={{
                   boxShadow: "4px 4px 0px 0px rgba(255,0,255,0.3)",
                 }}
               >
-                {loading ? (
+                {processing ? (
                   <div className="flex items-center gap-2">
                     <div className="animate-pulse">Loading</div>
                     <div className="animate-bounce">...</div>
@@ -342,4 +326,5 @@ export default function LoginPage() {
     </div>
   )
 }
-
+LoginPage.layout = (page) => <Layout children={page} />
+export default LoginPage

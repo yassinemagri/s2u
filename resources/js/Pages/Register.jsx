@@ -9,21 +9,19 @@ import { Label } from "@/Components/ui/label"
 import { Separator } from "@/Components/ui/separator"
 import { Checkbox } from "@/Components/ui/checkbox"
 import { Eye, EyeOff, Lock, Mail, User, Youtube, Github, Twitter } from 'lucide-react'
-import { Link } from "@inertiajs/react"
+import { Link, useForm } from "@inertiajs/react"
+import Layout from "@/Components/layout/Layout"
 
 
-export default function RegisterPage() {
+const Register = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: ""
+  const { data, setData, post, processing, errors } = useForm({
+    username: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
   })
-  const [acceptTerms, setAcceptTerms] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
   const [glitchEffect, setGlitchEffect] = useState(false)
   const [pixels, setPixels] = useState([])
   const canvasRef = useRef(null)
@@ -125,40 +123,14 @@ export default function RegisterPage() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
   
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-  }
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    setError("")
-    
-    if (!acceptTerms) {
-      setError("You must accept the terms and conditions")
-      return
-    }
-    
-    if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match")
-      return
-    }
-    
-    setLoading(true)
-    
-    // Simulate registration
-    setTimeout(() => {
-      if (formData.username && formData.email && formData.password) {
-        // router.push("/login")
-      } else {
-        setError("Please fill in all fields")
-      }
-      setLoading(false)
-    }, 1500)
+    post('/register');
   }
   
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-black p-4 relative overflow-hidden">
       {/* Canvas Background */}
       <canvas ref={canvasRef} className="absolute inset-0 z-0" />
       
@@ -260,15 +232,6 @@ export default function RegisterPage() {
           <Card className={`rounded-none border-4 border-primary bg-background/90 backdrop-blur-sm p-6 ${glitchEffect ? 'translate-x-[1px] translate-y-[1px]' : ''} transition-transform duration-75`}
                 style={{ boxShadow: "8px 8px 0px 0px rgba(0,255,255,0.3)" }}>
             <form onSubmit={handleSubmit} className="space-y-6">
-              {error && (
-                <div className="bg-red-500/10 border-2 border-red-500 p-3 font-mono text-sm text-red-500">
-                  <div className="flex items-center gap-2">
-                    <span>!</span>
-                    <span>{error}</span>
-                  </div>
-                </div>
-              )}
-              
               <div className="space-y-2">
                 <Label htmlFor="username" className="font-mono text-primary">
                   Username
@@ -282,11 +245,19 @@ export default function RegisterPage() {
                     name="username"
                     type="text"
                     placeholder="Choose a username"
-                    value={formData.username}
-                    onChange={handleChange}
+                    value={data.username}
+                    onChange={e => setData('username', e.target.value)}
                     className="font-mono pl-10 border-2 border-primary/50 focus:border-[#00FFFF] rounded-none"
                   />
                 </div>
+                {errors.username && (
+                <div className="bg-red-500/10 border-2 border-red-500 p-3 font-mono text-sm text-red-500">
+                  <div className="flex items-center gap-2">
+                    <span>!</span>
+                    <span>{errors.username}</span>
+                  </div>
+                </div>
+                )}
               </div>
               
               <div className="space-y-2">
@@ -302,11 +273,19 @@ export default function RegisterPage() {
                     name="email"
                     type="email"
                     placeholder="Enter your email"
-                    value={formData.email}
-                    onChange={handleChange}
+                    value={data.email}
+                    onChange={e => setData('email', e.target.value)}
                     className="font-mono pl-10 border-2 border-primary/50 focus:border-[#00FFFF] rounded-none"
                   />
                 </div>
+                {errors.email && (
+                <div className="bg-red-500/10 border-2 border-red-500 p-3 font-mono text-sm text-red-500">
+                  <div className="flex items-center gap-2">
+                    <span>!</span>
+                    <span>{errors.email}</span>
+                  </div>
+                </div>
+                )}
               </div>
               
               <div className="space-y-2">
@@ -322,8 +301,8 @@ export default function RegisterPage() {
                     name="password"
                     type={showPassword ? "text" : "password"}
                     placeholder="Create a password"
-                    value={formData.password}
-                    onChange={handleChange}
+                    value={data.password}
+                    onChange={e => setData('password', e.target.value)}
                     className="font-mono pl-10 border-2 border-primary/50 focus:border-[#00FFFF] rounded-none"
                   />
                   <Button
@@ -343,6 +322,14 @@ export default function RegisterPage() {
                     </span>
                   </Button>
                 </div>
+                {errors.password && (
+                <div className="bg-red-500/10 border-2 border-red-500 p-3 font-mono text-sm text-red-500">
+                  <div className="flex items-center gap-2">
+                    <span>!</span>
+                    <span>{errors.password}</span>
+                  </div>
+                </div>
+                )}
               </div>
               
               <div className="space-y-2">
@@ -358,8 +345,8 @@ export default function RegisterPage() {
                     name="confirmPassword"
                     type={showConfirmPassword ? "text" : "password"}
                     placeholder="Confirm your password"
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
+                    value={data.password_confirmation}
+                    onChange={e => setData('password_confirmation', e.target.value)}
                     className="font-mono pl-10 border-2 border-primary/50 focus:border-[#00FFFF] rounded-none"
                   />
                   <Button
@@ -381,35 +368,15 @@ export default function RegisterPage() {
                 </div>
               </div>
               
-              <div className="flex items-start space-x-2">
-                <Checkbox 
-                  id="terms" 
-                  checked={acceptTerms}
-                  onCheckedChange={(checked) => setAcceptTerms(checked)}
-                  className="rounded-none border-2 border-primary/50 data-[state=checked]:bg-[#00FFFF] data-[state=checked]:text-black"
-                />
-                <div className="grid gap-1.5 leading-none">
-                  <label
-                    htmlFor="terms"
-                    className="font-mono text-sm text-primary/70 leading-tight"
-                  >
-                    I accept the{" "}
-                    <Link to="/terms" className="text-[#00FFFF] hover:underline">
-                      terms and conditions
-                    </Link>
-                  </label>
-                </div>
-              </div>
-              
               <Button 
                 type="submit"
-                disabled={loading}
+                disabled={processing}
                 className="w-full font-mono bg-[#00FFFF] hover:bg-[#00FFFF]/90 text-black border-none rounded-none"
                 style={{ 
                   boxShadow: "4px 4px 0px 0px rgba(0,255,255,0.3)",
                 }}
               >
-                {loading ? (
+                {processing ? (
                   <div className="flex items-center gap-2">
                     <div className="animate-pulse">Creating</div>
                     <div className="animate-bounce">...</div>
@@ -470,7 +437,8 @@ export default function RegisterPage() {
     </div>
   )
 }
-
+Register.layout = (page) => <Layout children={page} />
+export default Register
 // Helper function to generate different character shapes
 function getCharacterShape(){
   const shapes = [

@@ -1,8 +1,10 @@
 import { GamepadIcon as GameController } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "@inertiajs/react";
+import { Link , router, usePage } from "@inertiajs/react";
 
 export default function Header() {
+  const {auth} = usePage().props;
+  console.log(auth)
   return (
     <header className="font-Pixel backdrop-blur-[10.4px] bg-[#ffffff14] border-b border-primary/20 py-4 capitalize">
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -44,6 +46,28 @@ export default function Header() {
                 SERVICES
               </Link>
             </li>
+            {auth.user ? auth.user.username : (
+              <>
+                <li>
+                <Link
+                  href="/register"
+                  className="text-primary hover:text-primary/80 transition-colors"
+                >
+                  REGISTER
+                </Link>
+              </li>
+              <li>
+              <Link
+                href="/login"
+                className="text-primary hover:text-primary/80 transition-colors"
+              >
+                LOGIN
+              </Link>
+              </li>
+              </>
+            )}
+            {auth.user && <Button onClick={() => router.delete('/logout')}>Log out</Button>}
+            
             <li>
               <Button
                 variant="outline"
