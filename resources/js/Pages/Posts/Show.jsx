@@ -1,12 +1,12 @@
 import { Button } from "@/Components/ui/button";
-import { Link } from "@inertiajs/react";
+import { Link, router } from "@inertiajs/react";
 import React from "react";
 
 const Show = ({id}) => {
     return (
         <>
             <Link href="/posts/{post}/edit">edit</Link>
-            <Button onClick={() => router.delete("/logout")}>Delete</Button>
+            <Button onClick={() => router.delete("/post/{post}")}>Delete</Button>
         </>
     );
 };
