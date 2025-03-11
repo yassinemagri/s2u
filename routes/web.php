@@ -1,9 +1,8 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\SesssionController;
 
 Route::get('/', function () {
     $bg_img = asset('imgs/main-bg.png');
@@ -12,14 +11,14 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return Inertia::render('About');
 });
+Route::get('/posts',[PostController::class,'index']);
+Route::get('/post/{post}',[PostController::class,'show']);
+Route::get('/post/create',[PostController::class,'create']);
+Route::post('/post',[PostController::class,'store'])->middleware('auth');
+Route::get('/post/{post}/edit',[PostController::class,'edit']);
 
-Route::middleware('guest')->group(function() {
-    Route::get('/register',[RegisterController::class,'create'])->name('register');
-    Route::post('/register',[RegisterController::class,'store'])->name('register.post');
-    Route::get('/login',[SesssionController::class,'create'])->name('login');
-    Route::post('/login',[SesssionController::class,'store'])->name('login.post');
-});
-Route::middleware('auth')->group(function(){
-    Route::delete('/logout',[SesssionController::class,'destroy'])->name('logout');
-});
+
+
+
+require __DIR__.'/auth.php';
 
