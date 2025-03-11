@@ -117,8 +117,6 @@ const Create = () => {
         };
     }, [particles]);
 
-    const handleChange = (e) => {};
-
     const handleSubmit = (e) => {
         e.preventDefault();
         post('/post')
@@ -246,7 +244,7 @@ const Create = () => {
                                     name="title"
                                     placeholder="Enter a title for your post"
                                     value={data.title}
-                                    onChange={""}
+                                    onChange={(e)=> setData("title",e.target.value)}
                                     className="font-mono border-2 border-primary/50 focus:border-[#FF00FF] rounded-none"
                                 />
                                 {errors.title && <p>{errors.title}</p>}
@@ -267,7 +265,7 @@ const Create = () => {
                                     name="description"
                                     placeholder="Enter a description (optional)"
                                     value={data.description}
-                                    onChange={""}
+                                    onChange={()=> setData(e)}
                                     className="font-mono border-2 border-primary/50 focus:border-[#FF00FF] rounded-none min-h-[80px]"
                                 />
                                 {errors.description && <p>{errors.description}</p>}
@@ -289,7 +287,7 @@ const Create = () => {
                                     name="unlock_Link"
                                     placeholder="Enter the URL that will unlock the content"
                                     value={data.unlock_Link}
-                                    onChange={""}
+                                    onChange={(e)=> setData("unlock_Link",e.target.value)}
                                     className="font-mono border-2 border-primary/50 focus:border-[#FF00FF] rounded-none"
                                 />
                                 {errors.unlock_Link && <p>{errors.unlock_Link}</p>}
@@ -311,7 +309,7 @@ const Create = () => {
                                     name="channel_Link"
                                     placeholder="Enter the content that will be locked"
                                     value={data.channel_Link}
-                                    onChange={""}
+                                    onChange={(e)=> setData("channel_Link",e.target.value)}
                                     className="font-mono border-2 border-primary/50 focus:border-[#FF00FF] rounded-none min-h-[120px]"
                                 />
                                 {errors.channel_Link && <p>{errors.channel_Link}</p>}

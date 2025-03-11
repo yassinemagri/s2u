@@ -4,7 +4,7 @@ import Create from './Create'
 const Index = () => {
   return (
     <>
-    {/* <Create /> */}
+    <Create />
     </>
   )
 }
