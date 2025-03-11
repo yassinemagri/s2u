@@ -71,6 +71,6 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        dd("DELETING YOUR POST GOES HERE");
     }
 }

@@ -41,7 +41,6 @@ class SesssionController extends Controller
                 'email' => "Credentials not valid"
             ]);
         };
-        Auth::login();
         return redirect('/');
     }
 

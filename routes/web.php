@@ -13,12 +13,10 @@ Route::get('/about', function () {
 });
 Route::get('/posts',[PostController::class,'index']);
 Route::get('/post/{post}',[PostController::class,'show']);
-Route::get('/post/create',[PostController::class,'create']);
+Route::get('/post/create',[PostController::class,'create'])->middleware('auth');
 Route::post('/post',[PostController::class,'store'])->middleware('auth');
 Route::get('/post/{post}/edit',[PostController::class,'edit']);
-
-
-
+Route::delete('/post/{post}',[PostController::class,'destroy']);
 
 require __DIR__.'/auth.php';
 
