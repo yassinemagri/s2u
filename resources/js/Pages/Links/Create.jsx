@@ -22,8 +22,8 @@ const Create = () => {
     const { data, setData, post, processing, errors } = useForm({
         title: "",
         description: "",
-        unlock_Link: "",
-        channel_Link: "",
+        unlock_link: "",
+        channel_link: "",
     });
 
   
@@ -172,15 +172,15 @@ const Create = () => {
                                     </span>
                                 </Label>
                                 <Input
-                                    id="channel_Link"
-                                    name="channel_Link"
+                                    id="channel_link"
+                                    name="channel_link"
                                     placeholder="Enter the content that will be locked"
-                                    value={data.channel_Link}
-                                    onChange={(e)=> setData("channel_Link",e.target.value)}
+                                    value={data.channel_link}
+                                    onChange={(e)=> setData("channel_link",e.target.value)}
                                     className="border-2 border-primary/50 focus:border-[#FF00FF] rounded-none"
                                     
                                 />
-                                {errors.channel_Link && <p className="bg-red-500/10 border-2 border-red-500 p-3  text-sm text-red-500">{errors.channel_Link}</p>}
+                                {errors.channel_link && <p className="bg-red-500/10 border-2 border-red-500 p-3  text-sm text-red-500">{errors.channel_link}</p>}
                             </div>
                             {/* Unlock Link */}
                             <div className="space-y-2">
@@ -195,14 +195,14 @@ const Create = () => {
                                     </span>
                                 </Label>
                                 <Input
-                                    id="unlock_Link"
-                                    name="unlock_Link"
+                                    id="unlock_link"
+                                    name="unlock_link"
                                     placeholder="Enter the URL that will unlock the content"
-                                    value={data.unlock_Link}
-                                    onChange={(e)=> setData("unlock_Link",e.target.value)}
+                                    value={data.unlock_link}
+                                    onChange={(e)=> setData("unlock_link",e.target.value)}
                                     className="border-2 border-primary/50 focus:border-[#FF00FF] rounded-none"
                                 />
-                                {errors.unlock_Link && <p>{errors.unlock_Link}</p>}
+                                {errors.unlock_link && <p className="bg-red-500/10 border-2 border-red-500 p-3  text-sm text-red-500">{errors.unlock_link}</p>}
                             </div>
                             {/* Description */}
                             <div className="space-y-2">
