@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -19,7 +19,6 @@ import { useForm } from "@inertiajs/react";
 import Layout from "@/Components/layout/Layout";
 
 const Create = () => {
-    const canvasRef = useRef(null);
     const { data, setData, post, processing, errors } = useForm({
         title: "",
         description: "",
@@ -27,10 +26,9 @@ const Create = () => {
         channel_Link: "",
     });
 
-    const [generatedLink, setGeneratedLink] = useState("");
+  
     const [copied, setCopied] = useState(false);
     const [glitchEffect, setGlitchEffect] = useState(false);
-    const [particles, setParticles] = useState([]);
 
     // Random glitch effect
     useEffect(() => {
@@ -42,81 +40,6 @@ const Create = () => {
         return () => clearInterval(glitchInterval);
     }, []);
 
-    // Canvas background animation
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-
-        const ctx = canvas.getContext("2d");
-        if (!ctx) return;
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        let animationFrameId;
-
-        const render = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Draw grid
-            ctx.strokeStyle = "rgba(255, 0, 255, 0.05)";
-            ctx.lineWidth = 1;
-
-            const gridSize = 40;
-            for (let x = 0; x < canvas.width; x += gridSize) {
-                ctx.beginPath();
-                ctx.moveTo(x, 0);
-                ctx.lineTo(x, canvas.height);
-                ctx.stroke();
-            }
-
-            for (let y = 0; y < canvas.height; y += gridSize) {
-                ctx.beginPath();
-                ctx.moveTo(0, y);
-                ctx.lineTo(canvas.width, y);
-                ctx.stroke();
-            }
-
-            // Update and draw particles
-            const updatedParticles = particles
-                .filter((p) => p.life > 0)
-                .map((p) => {
-                    // Update position
-                    p.x += p.vx;
-                    p.y += p.vy;
-
-                    // Update life
-                    p.life -= 1;
-
-                    // Draw particle
-                    const alpha = (p.life / p.maxLife) * 0.7;
-                    ctx.fillStyle = `${p.color}${Math.floor(alpha * 255)
-                        .toString(16)
-                        .padStart(2, "0")}`;
-                    ctx.fillRect(p.x, p.y, p.size, p.size);
-
-                    return p;
-                });
-
-            setParticles(updatedParticles);
-
-            animationFrameId = window.requestAnimationFrame(render);
-        };
-
-        render();
-
-        const handleResize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        };
-
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            window.removeEventListener("resize", handleResize);
-            window.cancelAnimationFrame(animationFrameId);
-        };
-    }, [particles]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -134,26 +57,11 @@ const Create = () => {
         setTimeout(() => setCopied(false), 2000);
     };
 
-    const createParticles = () => {
-        const colors = ["#FF00FF", "#00FFFF", "#FFFF00", "#00FF00"];
-        const newParticles = Array.from({ length: 50 }).map(() => ({
-            x: window.innerWidth / 2 + (Math.random() - 0.5) * 200,
-            y: window.innerHeight / 2 + (Math.random() - 0.5) * 200,
-            size: Math.random() * 6 + 2,
-            color: colors[Math.floor(Math.random() * colors.length)],
-            vx: (Math.random() - 0.5) * 4,
-            vy: (Math.random() - 0.5) * 4,
-            life: Math.random() * 100 + 50,
-            maxLife: 150,
-        }));
 
-        setParticles((prev) => [...prev, ...newParticles]);
-    };
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4 relative overflow-hidden">
-            {/* Canvas Background */}
-            <canvas ref={canvasRef} className="absolute inset-0 z-0" />
+
 
             {/* Background Effects */}
             <div className="absolute inset-0 bg-gradient-to-b from-background to-background/80 z-0">
@@ -341,50 +249,17 @@ const Create = () => {
                                 )}
                             </Button>
 
-                            {generatedLink && (
-                                <div className="mt-6 p-4 border-2 border-[#FF00FF] bg-[#FF00FF]/5">
-                                    <Label className="text-primary mb-2 block">
-                                        Generated Link:
-                                    </Label>
-                                    <div className="flex items-center gap-2">
-                                        <Input
-                                            readOnly
-                                            value={generatedLink}
-                                            className="border-2 border-primary/50 focus:border-[#FF00FF] rounded-none"
-                                        />
-                                        <Button
-                                            type="button"
-                                            variant="outline"
-                                            size="icon"
-                                            onClick={() =>
-                                                copyToClipboard(generatedLink)
-                                            }
-                                            className="border-2 border-primary/50 rounded-none"
-                                        >
-                                            {copied ? (
-                                                <Check className="h-4 w-4 text-green-500" />
-                                            ) : (
-                                                <Copy className="h-4 w-4" />
-                                            )}
-                                        </Button>
-                                    </div>
-                                    <p className="text-xs text-primary/70 mt-2">
-                                        Share this link with your audience. When
-                                        they visit, they'll need to visit your
-                                        unlock link to see the content.
-                                    </p>
-                                </div>
-                            )}
+
                         </form>
                     </Card>
                 </div>
             </div>
 
             {/* Decorative Game Elements */}
-            <div className="fixed bottom-4 right-4 opacity-50 z-10">
+            <div className="absolute bottom-4 right-4 opacity-50 z-10">
                 <Gamepad2 className="h-8 w-8 text-[#FF00FF]" />
             </div>
-            <div className="fixed bottom-4 left-4 opacity-50 z-10 text-xs text-[#FF00FF]/70">
+            <div className="absolute bottom-4 left-4 opacity-50 z-10 text-xs text-[#FF00FF]/70">
                 PRESS A TO GENERATE
             </div>
 
