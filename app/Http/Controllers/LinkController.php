@@ -34,7 +34,7 @@ class LinkController extends Controller
             'title' => ['required',"min:8", "max:100"],
             'unlock_link' => ['required',"min:10","url"],       
             'channel_link' => ['required',"min:25","url"],
-            'description' => ["min:8", "max:255"],
+            'description' => ["min:0", "max:255"],
         ]);
         Link::create($validated);
         return Redirect::route('links')->with('success', 'Your link has been generated.');
