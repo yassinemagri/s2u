@@ -9,8 +9,8 @@ Route::get('/', function () {
     return Inertia::render('Home/Index',compact('bg_img'));
 });
 // These pages have an error!!!!.
-Route::get('/devdetails', function () {
-    return Inertia::render('DevDetails');
+Route::get('/terms-and-conditions', function () {
+    return Inertia::render('TermsAndConditions');
 });
 // pages
 Route::get('/about', function () {
@@ -22,6 +22,9 @@ Route::get('/contact', function () {
 
 Route::get('/privacy-policy', function () {
     return Inertia::render('PrivacyPolicy');
+});
+Route::get('/devdetails', function () {
+    return Inertia::render('DevDetails');
 });
 // page 404
 Route::fallback(function () {
