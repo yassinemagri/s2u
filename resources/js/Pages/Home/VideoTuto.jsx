@@ -2,6 +2,8 @@ import React from 'react'
 import { Button } from "@/Components/ui/button";
 import { Card } from "@/Components/ui/card";
 import { AspectRatio } from "@/Components/ui/aspect-ratio";
+import Layout from '@/Components/layout/Layout';
+
 const VideoTuto = () => {
   return (
     <div className="relative">
@@ -41,5 +43,5 @@ const VideoTuto = () => {
           </div>
   )
 }
-
+VideoTuto.layout = (page) => <Layout children={page} />
 export default VideoTuto

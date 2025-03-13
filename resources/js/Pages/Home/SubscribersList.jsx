@@ -7,6 +7,7 @@ import { Link } from "@inertiajs/react"
 
 export default function SubscribersList({subscriberss = []}) {
   const [subscribers, setSubscribers] = useState([{
+    id: '1',
     username:'SayQ101',
     body:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo in tenetur reprehenderit aliquid amet animi eos quam inventore aperiam nisi ullam vero modi, eligendi eum mollitia accusantium recusandae eius iure?',
     isYoutuber: true,
