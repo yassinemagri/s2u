@@ -15,7 +15,7 @@ class LinkController extends Controller
      */
     public function index()
     {
-        $links = Link::latest()->with("user")->paginate(7);
+        $links = Link::latest()->where('user_id', Auth::id())->with('user:id,username')->paginate(7);
         return Inertia::render('Links/Index',compact('links'));
     }
 
@@ -40,7 +40,7 @@ class LinkController extends Controller
         ]);
         $validated["user_id"] = Auth::id();
         Link::create($validated);
-        return Redirect::route('links')->with('success', 'Your link has been generated.');
+        return Redirect::route('my-links')->with('success', 'Your link has been generated.');
     }
 
     /**

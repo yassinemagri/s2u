@@ -20,7 +20,7 @@ Route::fallback(function () {
     return Inertia::render('NotFound')->toResponse(request())->setStatusCode(404);
 });
 // links routes
-Route::get('/links',[LinkController::class,'index'])->name('links');
+Route::get('/my-links',[LinkController::class,'index'])->name('links')->middleware('auth');
 Route::get('/link/create',[LinkController::class,'create'])->middleware('auth');
 Route::get('/link/{link}',[LinkController::class,'show']);
 Route::post('/link',[LinkController::class,'store'])->middleware('auth');
