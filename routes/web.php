@@ -11,6 +11,12 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return Inertia::render('About');
 });
+Route::get('/contact', function () {
+    return Inertia::render('Contact');
+});
+Route::get('/privacy-policy', function () {
+    return Inertia::render('PrivacyPolicy');
+});
 Route::fallback(function () {
     return Inertia::render('NotFound')->toResponse(request())->setStatusCode(404);
 });

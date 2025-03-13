@@ -8,7 +8,7 @@ import { Input } from "@/Components/ui/input"
 import { Label } from "@/Components/ui/label"
 import { Separator } from "@/Components/ui/separator"
 import { Checkbox } from "@/Components/ui/checkbox"
-import { Eye, EyeOff, Lock, Mail, User, Youtube, Github, Twitter } from 'lucide-react'
+import { Eye, EyeOff, Lock, Mail, User, Youtube } from 'lucide-react'
 import { Link, useForm } from "@inertiajs/react"
 import Layout from "@/Components/layout/Layout"
 
