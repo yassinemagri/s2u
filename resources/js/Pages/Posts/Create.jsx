@@ -16,6 +16,7 @@ import {
     Gamepad2,
 } from "lucide-react";
 import { useForm } from "@inertiajs/react";
+import Layout from "@/Components/layout/Layout";
 
 const Create = () => {
     const canvasRef = useRef(null);
@@ -170,7 +171,7 @@ const Create = () => {
                 <div className="w-3 h-3 rounded-full bg-[#00FFFF]"></div>
                 <div className="w-3 h-3 rounded-full bg-[#FFFF00]"></div>
             </div>
-            <div className="absolute top-8 right-8 font-mono text-xs text-[#FF00FF]/70 z-10">
+            <div className="absolute top-8 right-8 text-xs text-[#FF00FF]/70 z-10">
                 CONTENT CREATOR v1.2.0
             </div>
 
@@ -183,7 +184,7 @@ const Create = () => {
                     <div className="flex justify-center">
                         <Badge
                             variant="outline"
-                            className="font-mono text-[#FF00FF] border-2 border-[#FF00FF]/20 px-4 py-2 rounded-none"
+                            className="text-[#FF00FF] border-2 border-[#FF00FF]/20 px-4 py-2 rounded-none"
                             style={{ textShadow: "1px 1px 0px #FF00FF" }}
                         >
                             CREATE POST
@@ -191,7 +192,7 @@ const Create = () => {
                     </div>
 
                     <h1
-                        className="font-mono text-3xl md:text-4xl font-bold text-primary relative"
+                        className="text-3xl md:text-4xl font-bold text-primary relative"
                         style={{ textShadow: "3px 3px 0px #FF00FF" }}
                     >
                         Share Your Content
@@ -202,7 +203,7 @@ const Create = () => {
                         )}
                     </h1>
 
-                    <p className="font-mono text-primary/70">
+                    <p className="text-primary/70">
                         Create a post with locked content that can be unlocked
                         via a link
                     </p>
@@ -231,7 +232,7 @@ const Create = () => {
                             <div className="space-y-2">
                                 <Label
                                     htmlFor="title"
-                                    className="font-mono text-primary flex items-center"
+                                    className="text-primary flex items-center"
                                 >
                                     <FileText className="h-4 w-4 mr-2" />
                                     Post Title{" "}
@@ -245,36 +246,38 @@ const Create = () => {
                                     placeholder="Enter a title for your post"
                                     value={data.title}
                                     onChange={(e)=> setData("title",e.target.value)}
-                                    className="font-mono border-2 border-primary/50 focus:border-[#FF00FF] rounded-none"
+                                    className="border-2 border-primary/50 focus:border-[#FF00FF] rounded-none"
                                 />
-                                {errors.title && <p>{errors.title}</p>}
+                                {errors.title && <p className="bg-red-500/10 border-2 border-red-500 p-3  text-sm text-red-500">{errors.title}</p>}
 
                             </div>
-
-                            {/* Description */}
+                            {/* Channel Link */}
                             <div className="space-y-2">
                                 <Label
-                                    htmlFor="description"
-                                    className="font-mono text-primary flex items-center"
+                                    htmlFor="channel_Link"
+                                    className="text-primary flex items-center"
                                 >
-                                    <FileText className="h-4 w-4 mr-2" />
-                                    Description
+                                    <Lock className="h-4 w-4 mr-2" />
+                                    Channel Link{" "}
+                                    <span className="text-[#FF00FF] ml-1">
+                                        *
+                                    </span>
                                 </Label>
-                                <Textarea
-                                    id="description"
-                                    name="description"
-                                    placeholder="Enter a description (optional)"
-                                    value={data.description}
-                                    onChange={()=> setData(e)}
-                                    className="font-mono border-2 border-primary/50 focus:border-[#FF00FF] rounded-none min-h-[80px]"
+                                <Input
+                                    id="channel_Link"
+                                    name="channel_Link"
+                                    placeholder="Enter the content that will be locked"
+                                    value={data.channel_Link}
+                                    onChange={(e)=> setData("channel_Link",e.target.value)}
+                                    className="border-2 border-primary/50 focus:border-[#FF00FF] rounded-none"
                                 />
-                                {errors.description && <p>{errors.description}</p>}
+                                {errors.channel_Link && <p className="bg-red-500/10 border-2 border-red-500 p-3  text-sm text-red-500">{errors.channel_Link}</p>}
                             </div>
                             {/* Unlock Link */}
                             <div className="space-y-2">
                                 <Label
                                     htmlFor="unlock_Link"
-                                    className="font-mono text-primary flex items-center"
+                                    className="text-primary flex items-center"
                                 >
                                     <Unlock className="h-4 w-4 mr-2" />
                                     Unlock Link{" "}
@@ -288,37 +291,33 @@ const Create = () => {
                                     placeholder="Enter the URL that will unlock the content"
                                     value={data.unlock_Link}
                                     onChange={(e)=> setData("unlock_Link",e.target.value)}
-                                    className="font-mono border-2 border-primary/50 focus:border-[#FF00FF] rounded-none"
+                                    className="border-2 border-primary/50 focus:border-[#FF00FF] rounded-none"
                                 />
                                 {errors.unlock_Link && <p>{errors.unlock_Link}</p>}
                             </div>
-                            {/* Locked Content */}
+                            {/* Description */}
                             <div className="space-y-2">
                                 <Label
-                                    htmlFor="channel_Link"
-                                    className="font-mono text-primary flex items-center"
+                                    htmlFor="description"
+                                    className="text-primary flex items-center"
                                 >
-                                    <Lock className="h-4 w-4 mr-2" />
-                                    Locked Content{" "}
-                                    <span className="text-[#FF00FF] ml-1">
-                                        *
-                                    </span>
+                                    <FileText className="h-4 w-4 mr-2" />
+                                    Description
                                 </Label>
                                 <Textarea
-                                    id="channel_Link"
-                                    name="channel_Link"
-                                    placeholder="Enter the content that will be locked"
-                                    value={data.channel_Link}
-                                    onChange={(e)=> setData("channel_Link",e.target.value)}
-                                    className="font-mono border-2 border-primary/50 focus:border-[#FF00FF] rounded-none min-h-[120px]"
+                                    id="description"
+                                    name="description"
+                                    placeholder="Enter a description (optional)"
+                                    value={data.description}
+                                    onChange={(e)=> setData("description",e.target.value)}
+                                    className="border-2 border-primary/50 focus:border-[#FF00FF] rounded-none min-h-[80px]"
                                 />
-                                {errors.channel_Link && <p>{errors.channel_Link}</p>}
+                                {errors.description && <p className="bg-red-500/10 border-2 border-red-500 p-3  text-sm text-red-500">{errors.description}</p>}
                             </div>
-
                             <Button
                                 type="submit"
                                 disabled={processing}
-                                className="w-full font-mono bg-[#FF00FF] hover:bg-[#FF00FF]/90 text-white border-none rounded-none"
+                                className="w-full bg-[#FF00FF] hover:bg-[#FF00FF]/90 text-white border-none rounded-none"
                                 style={{
                                     boxShadow:
                                         "4px 4px 0px 0px rgba(255,0,255,0.3)",
@@ -343,14 +342,14 @@ const Create = () => {
 
                             {generatedLink && (
                                 <div className="mt-6 p-4 border-2 border-[#FF00FF] bg-[#FF00FF]/5">
-                                    <Label className="font-mono text-primary mb-2 block">
+                                    <Label className="text-primary mb-2 block">
                                         Generated Link:
                                     </Label>
                                     <div className="flex items-center gap-2">
                                         <Input
                                             readOnly
                                             value={generatedLink}
-                                            className="font-mono border-2 border-primary/50 focus:border-[#FF00FF] rounded-none"
+                                            className="border-2 border-primary/50 focus:border-[#FF00FF] rounded-none"
                                         />
                                         <Button
                                             type="button"
@@ -368,7 +367,7 @@ const Create = () => {
                                             )}
                                         </Button>
                                     </div>
-                                    <p className="font-mono text-xs text-primary/70 mt-2">
+                                    <p className="text-xs text-primary/70 mt-2">
                                         Share this link with your audience. When
                                         they visit, they'll need to visit your
                                         unlock link to see the content.
@@ -384,7 +383,7 @@ const Create = () => {
             <div className="fixed bottom-4 right-4 opacity-50 z-10">
                 <Gamepad2 className="h-8 w-8 text-[#FF00FF]" />
             </div>
-            <div className="fixed bottom-4 left-4 opacity-50 z-10 font-mono text-xs text-[#FF00FF]/70">
+            <div className="fixed bottom-4 left-4 opacity-50 z-10 text-xs text-[#FF00FF]/70">
                 PRESS A TO GENERATE
             </div>
 

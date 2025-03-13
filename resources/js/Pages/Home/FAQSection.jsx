@@ -25,7 +25,7 @@ export default function FAQSection() {
         },
     ];
     return (
-        <section className="container mx-auto px-4 py-24">
+        <section className="container mx-auto px-4 py-24" id="faq">
             <div className="max-w-4xl mx-auto space-y-8">
                 <div className="space-y-4 text-center">
                     <Badge

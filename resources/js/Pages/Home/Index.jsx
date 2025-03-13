@@ -8,8 +8,8 @@ import SubscribersList from "./SubscribersList";
 const Index = () => {
     return (
         <>
-            <div className="font-Pixel text-white  container mx-auto px-20 py-12 capitalize">
-                <div className="grid lg:grid-cols-2 gap-12 items-start space-x-20">
+            <div className="font-Pixel text-white  container mx-auto px-20 py-12 capitalize scroll-smooth">
+                <div className="grid lg:grid-cols-2 gap-12 items-start space-x-20 ">
                     {/* Left Column */}
                     <Instructions />
                     {/* Right Column */}
