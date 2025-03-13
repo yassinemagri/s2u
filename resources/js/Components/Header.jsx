@@ -21,6 +21,10 @@ export default function Header() {
             name: "About Us",
             url:"/about"
         },
+        {
+            name: "Create Links",
+            url:"/link/create"
+        },
     ];
     const urlPage = usePage().url
     const [renderHtml, setRenderHtml] = useState(usePage().url);

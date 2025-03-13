@@ -16,6 +16,7 @@ import Layout from "@/Components/layout/Layout"
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [acceptTerms, setAcceptTerms] = useState(false)
   const { data, setData, post, processing, errors } = useForm({
     username: '',
     email: '',
@@ -126,6 +127,11 @@ const Register = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault()
+    if (!acceptTerms) {
+      setError("You must accept the terms and conditions")
+      return
+    }
+    
     post('/register');
   }
   
@@ -367,7 +373,25 @@ const Register = () => {
                   </Button>
                 </div>
               </div>
-              
+              <div className="flex items-start space-x-2">
+                <Checkbox 
+                  id="terms" 
+                  checked={acceptTerms}
+                  onCheckedChange={(checked) => setAcceptTerms(checked)}
+                  className="rounded-none border-2 border-primary/50 data-[state=checked]:bg-[#00FFFF] data-[state=checked]:text-black"
+                />
+                <div className="grid gap-1.5 leading-none">
+                  <label
+                    htmlFor="terms"
+                    className="font-mono text-sm text-primary/70 leading-tight"
+                  >
+                    I accept the{" "}
+                    <Link to="/terms" className="text-[#00FFFF] hover:underline">
+                      terms and conditions
+                    </Link>
+                  </label>
+                </div>
+              </div>
               <Button 
                 type="submit"
                 disabled={processing}
