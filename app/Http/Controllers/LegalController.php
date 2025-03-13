@@ -2,19 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 
-class PostController extends Controller
+class LegalController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function about()
     {
-        return Inertia::render('Posts/Index');
+        return Inertia::render('About');
+    }
+    public function contact()
+    {
+        return Inertia::render('contact');
+    }
+    public function PrivacyPolicy()
+    {
+        return Inertia::render('PrivacyPolicy');
+    }
+    public function DevDetails()
+    {
+        return Inertia::render('DevDetails');
+    }
+    public function TermsAndConditions()
+    {
+        return Inertia::render('TermsAndConditions');
     }
 
     /**
@@ -22,7 +36,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Posts/Create');
+        //
     }
 
     /**
@@ -30,16 +44,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $validated = $request->validate([
-            'title' => ['required',"min:8", "max:100"],
-            'description' => ['required',"min:8", "max:255"],
-            'unlock_link' => ['required',"min:10"],       
-            'channel_link' => ['required',"min:25"],
-        ]);
-        dd($request->all());
-        Post::create($validated);
-        return Redirect::route('posts')->with('success', 'Your post has been created.');
+        //
     }
 
     /**
@@ -47,7 +52,7 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        return Inertia::render('Posts/Show');
+        //
     }
 
     /**
@@ -55,7 +60,7 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        return Inertia::render('Posts/Edit');
+        //
     }
 
     /**
@@ -71,6 +76,6 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        dd("DELETING YOUR POST GOES HERE");
+        //
     }
 }

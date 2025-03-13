@@ -1,0 +1,76 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Link;
+use Inertia\Inertia;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
+class LinkController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        return Inertia::render('Links/Index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return Inertia::render('Links/Create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        
+        $validated = $request->validate([
+            'title' => ['required',"min:8", "max:100"],
+            'description' => ['required',"min:8", "max:255"],
+            'unlock_link' => ['required',"min:10","active_url"],       
+            'channel_link' => ['required',"min:25","active_url"],
+        ]);
+        dd($request->all());
+        Link::create($validated);
+        return Redirect::route('links')->with('success', 'Your post has been created.');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        return Inertia::render('Links/Show');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        return Inertia::render('Links/Edit');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        dd("DELETING YOUR POST GOES HERE");
+    }
+}

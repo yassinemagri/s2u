@@ -1,42 +1,31 @@
 <?php
 
-use App\Http\Controllers\PostController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LinkController;
+use App\Http\Controllers\LegalController;
 
 Route::get('/', function () {
     $bg_img = asset('imgs/main-bg.png');
     return Inertia::render('Home/Index',compact('bg_img'));
 });
-// These pages have an error!!!!.
-Route::get('/terms-and-conditions', function () {
-    return Inertia::render('TermsAndConditions');
-});
-// pages
-Route::get('/about', function () {
-    return Inertia::render('About');
-});
-Route::get('/contact', function () {
-    return Inertia::render('Contact');
-});
-
-Route::get('/privacy-policy', function () {
-    return Inertia::render('PrivacyPolicy');
-});
-Route::get('/devdetails', function () {
-    return Inertia::render('DevDetails');
-});
+// Legal Routes
+Route::get('/about',[LegalController::class,'about']);
+Route::get('/contact',[LegalController::class,'contact']);
+Route::get('/privacy-policy',[LegalController::class,'privacyPolicy']);
+Route::get('/devdetails',[LegalController::class,'DevDetails']);
+Route::get('/terms-and-conditions',[LegalController::class, 'TermsAndConditions']);
 // page 404
 Route::fallback(function () {
     return Inertia::render('NotFound')->toResponse(request())->setStatusCode(404);
 });
 // posts
-Route::get('/posts',[PostController::class,'index']);
-Route::get('/post/create',[PostController::class,'create'])->middleware('auth');
-Route::get('/post/{post}',[PostController::class,'show']);
-Route::post('/post',[PostController::class,'store'])->middleware('auth');
-Route::get('/post/{post}/edit',[PostController::class,'edit']);
-Route::delete('/post/{post}',[PostController::class,'destroy']);
+Route::get('/links',[LinkController::class,'index']);
+Route::get('/link/create',[LinkController::class,'create'])->middleware('auth');
+Route::get('/link/{link}',[LinkController::class,'show']);
+Route::post('/link',[LinkController::class,'store'])->middleware('auth');
+Route::get('/link/{link}/edit',[LinkController::class,'edit']);
+Route::delete('/link/{link}',[LinkController::class,'destroy']);
 
 require __DIR__.'/auth.php';
 
