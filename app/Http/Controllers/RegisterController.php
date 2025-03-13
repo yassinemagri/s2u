@@ -33,10 +33,11 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         $userAttributes = $request->validate([
-            'username' => 'required|min:5|max:10',
+            'username' => 'required|min:5|max:24',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+        
         $user = User::create($userAttributes);
         Auth::login($user);
         return redirect('/');
