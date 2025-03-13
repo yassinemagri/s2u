@@ -1,9 +1,9 @@
 import React from "react";
-import Layout from "@/Components/layout/Layout";
 import Instructions from "./Instructions";
 import VideoTuto from "./VideoTuto";
 import FAQSection from "./FAQSection";
 import SubscribersList from "./SubscribersList";
+import Layout from "@/Components/layout/Layout";
 
 const Index = () => {
     return (
