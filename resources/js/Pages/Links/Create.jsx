@@ -120,7 +120,7 @@ const Create = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post('/post')
+        post('/link')
     };
 
     //  copy text
@@ -270,6 +270,7 @@ const Create = () => {
                                     value={data.channel_Link}
                                     onChange={(e)=> setData("channel_Link",e.target.value)}
                                     className="border-2 border-primary/50 focus:border-[#FF00FF] rounded-none"
+                                    
                                 />
                                 {errors.channel_Link && <p className="bg-red-500/10 border-2 border-red-500 p-3  text-sm text-red-500">{errors.channel_Link}</p>}
                             </div>

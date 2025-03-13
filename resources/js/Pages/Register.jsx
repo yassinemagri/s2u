@@ -128,7 +128,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!acceptTerms) {
-      setError("You must accept the terms and conditions")
+      alert("You must accept the terms and conditions")
       return
     }
     
