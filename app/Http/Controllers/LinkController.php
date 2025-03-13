@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Link;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class LinkController extends Controller
@@ -14,7 +15,8 @@ class LinkController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Links/Index');
+        $links = Link::latest()->with("user")->paginate(7);
+        return Inertia::render('Links/Index',compact('links'));
     }
 
     /**
@@ -36,6 +38,7 @@ class LinkController extends Controller
             'channel_link' => ['required',"min:25","url"],
             'description' => ["min:0", "max:255"],
         ]);
+        $validated["user_id"] = Auth::id();
         Link::create($validated);
         return Redirect::route('links')->with('success', 'Your link has been generated.');
     }
