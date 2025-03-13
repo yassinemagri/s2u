@@ -33,11 +33,10 @@ class LinkController extends Controller
         
         $validated = $request->validate([
             'title' => ['required',"min:8", "max:100"],
-            'description' => ['required',"min:8", "max:255"],
             'unlock_link' => ['required',"min:10","active_url"],       
             'channel_link' => ['required',"min:25","active_url"],
+            'description' => ["min:8", "max:255"],
         ]);
-        dd($request->all());
         Link::create($validated);
         return Redirect::route('links')->with('success', 'Your post has been created.');
     }
