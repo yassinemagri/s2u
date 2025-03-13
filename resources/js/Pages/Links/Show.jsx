@@ -5,28 +5,12 @@ import { ExternalLink, Youtube, Moon, Sun } from "lucide-react";
 import { useParams } from "react-router-dom";
 import Layout from "@/Components/layout/Layout";
 
-const Show = ()=> {
+const Show = ({links})=> {
   const { id } = useParams();
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [countdown, setCountdown] = useState(3);
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [apiData, setapiData] = useState(null);
-  useEffect(() => {
-    async function fetchSubscribers() {
-      try {
-        const response = await fetch(`/api/subs/${id}`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        setapiData(data.subs);
-      } catch (error) {
-        console.error("Error fetching subscribers:", error);
-      }
-    }
-
-    fetchSubscribers();
-  }, []);
+  const [apiData, setapiData] = useState(links);
 
   useEffect(() => {
     let timer;
