@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('links', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
             $table->string('unlock_link');
             $table->string('channel_link');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
