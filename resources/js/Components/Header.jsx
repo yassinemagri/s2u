@@ -18,7 +18,7 @@ export default function Header() {
             url:"/"
         },
         {
-            name: "about",
+            name: "About Us",
             url:"/about"
         },
     ];
@@ -42,7 +42,7 @@ export default function Header() {
         setRenderHtml(render_Html)
     },[usePage().url])
     return (
-        <header className=" font-bold text-lg backdrop-blur-[10.4px] bg-[#ffffff14] border-b border-primary/20 py-4 capitalize">
+        <header className="font-bold text-lg backdrop-blur-[10.4px] bg-[#ffffff14] border-b border-primary/20 py-4 capitalize">
             <div className="container mx-auto px-4 flex justify-between items-center">
                 <Link href="/" className="flex items-center gap-2">
                     <Youtube className="h-6 w-6 text-primary" />

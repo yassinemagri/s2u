@@ -5,8 +5,9 @@ import { Button } from "@/Components/ui/button";
 import { Card } from "@/Components/ui/card";
 import { Home, RotateCcw, Youtube } from "lucide-react";
 import { Link } from "@inertiajs/react";
+import Layout from "@/Components/layout/Layout";
 
-const NotFoundPage= ()=> {
+const NotFound = ()=> {
   const [countdown, setCountdown] = useState(5);
   const [glitchEffect, setGlitchEffect] = useState(false);
 
@@ -205,5 +206,5 @@ const NotFoundPage= ()=> {
     </div>
   );
 }
-// NotFoundPage.layout = (page) => <Layout children={page} />;
-export default NotFoundPage
+NotFound.layout = (page) => <Layout children={page} />;
+export default NotFound
