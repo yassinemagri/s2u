@@ -84,7 +84,7 @@ const DevDetails = ()=> {
           <div className="flex justify-center">
             <Badge
               variant="outline"
-              className="font-mono text-[#00FFFF] border-2 border-[#00FFFF]/20 px-4 py-2 rounded-none"
+              className=" text-[#00FFFF] border-2 border-[#00FFFF]/20 px-4 py-2 rounded-none"
               style={{ textShadow: "1px 1px 0px #00FFFF" }}
             >
               TECH STACK
@@ -92,13 +92,13 @@ const DevDetails = ()=> {
           </div>
 
           <h1
-            className={`font-mono text-4xl md:text-5xl font-bold text-primary ${glitchEffect ? "translate-x-[2px]" : ""} transition-transform duration-75`}
+            className={` text-4xl md:text-5xl font-bold text-primary ${glitchEffect ? "translate-x-[2px]" : ""} transition-transform duration-75`}
             style={{ textShadow: "4px 4px 0px #00FFFF" }}
           >
             Developer Details
           </h1>
 
-          <p className="font-mono text-lg text-primary/70 max-w-3xl mx-auto">
+          <p className=" text-lg text-primary/70 max-w-3xl mx-auto">
             At s2u, we use the latest technologies to provide a seamless and efficient user experience. Our platform is
             designed using an innovative set of languages and frameworks.
           </p>
@@ -116,7 +116,7 @@ const DevDetails = ()=> {
           <div className="absolute -bottom-2 -right-2 w-4 h-4 border-b-4 border-r-4 border-[#00FFFF]"></div>
 
           <Tabs defaultValue="frontend" onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid grid-cols-2 sm:grid-cols-5 mb-6 rounded-none border-2 border-primary bg-background p-1 font-mono">
+            <TabsList className="grid grid-cols-2 sm:grid-cols-5 mb-6 rounded-none border-2 border-primary bg-background p-1 ">
               <TabsTrigger
                 value="frontend"
                 className="rounded-none data-[state=active]:bg-[#FF00FF] data-[state=active]:text-white"
@@ -156,78 +156,35 @@ const DevDetails = ()=> {
                   <Code className="h-6 w-6 text-[#FF00FF]" />
                 </div>
                 <h2
-                  className="font-mono text-2xl font-bold text-primary"
+                  className=" text-2xl font-bold text-primary"
                   style={{ textShadow: "2px 2px 0px rgba(255,0,255,0.3)" }}
                 >
-                  Frontend Technologies
+                  Frontend by Yassine Magri
                 </h2>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-6">
-                  {/* HTML5 */}
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 flex items-center justify-center border-2 border-[#FF00FF] bg-[#FF00FF]/10">
-                          <span className="font-mono font-bold text-[#FF00FF]">H5</span>
-                        </div>
-                        <h3 className="font-mono font-bold text-primary">HTML5</h3>
-                      </div>
-                      <Badge className="bg-[#FF00FF] text-white rounded-none">{progressValues.html}%</Badge>
-                    </div>
-                    <Progress
-                      value={progressValues.html}
-                      className="h-2 bg-primary/20"
-                      indicatorClassName="bg-[#FF00FF]"
-                    />
-                    <p className="font-mono text-sm text-primary/70">
-                      For structuring web pages in a device-friendly way.
-                    </p>
-                  </div>
+
 
                   {/* CSS */}
                   <div className="space-y-2">
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-8 flex items-center justify-center border-2 border-[#FF00FF] bg-[#FF00FF]/10">
-                          <span className="font-mono font-bold text-[#FF00FF]">CSS</span>
+                          <span className=" font-bold text-[#FF00FF]">CSS</span>
                         </div>
-                        <h3 className="font-mono font-bold text-primary">CSS & Tailwind</h3>
+                        <h3 className=" font-bold text-primary">Tailwind & ShadCN</h3>
                       </div>
-                      <Badge className="bg-[#FF00FF] text-white rounded-none">{progressValues.css}%</Badge>
+                      
                     </div>
-                    <Progress
-                      value={progressValues.css}
-                      className="h-2 bg-primary/20"
-                      indicatorClassName="bg-[#FF00FF]"
-                    />
-                    <p className="font-mono text-sm text-primary/70">
+
+                    <p className=" text-sm text-primary/70">
                       To create visually appealing websites, using Tailwind CSS for modern, fast designs. We also
                       leveraged ShadCN for advanced component control.
                     </p>
                   </div>
 
-                  {/* JavaScript */}
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 flex items-center justify-center border-2 border-[#FF00FF] bg-[#FF00FF]/10">
-                          <span className="font-mono font-bold text-[#FF00FF]">JS</span>
-                        </div>
-                        <h3 className="font-mono font-bold text-primary">JavaScript</h3>
-                      </div>
-                      <Badge className="bg-[#FF00FF] text-white rounded-none">{progressValues.js}%</Badge>
-                    </div>
-                    <Progress
-                      value={progressValues.js}
-                      className="h-2 bg-primary/20"
-                      indicatorClassName="bg-[#FF00FF]"
-                    />
-                    <p className="font-mono text-sm text-primary/70">
-                      To add interactivity and advanced functionality to the user interface.
-                    </p>
-                  </div>
                 </div>
 
                 <div className="space-y-6">
@@ -236,18 +193,14 @@ const DevDetails = ()=> {
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-8 flex items-center justify-center border-2 border-[#FF00FF] bg-[#FF00FF]/10">
-                          <span className="font-mono font-bold text-[#FF00FF]">⚛️</span>
+                          <span className=" font-bold text-[#FF00FF]">⚛️</span>
                         </div>
-                        <h3 className="font-mono font-bold text-primary">React.js (with Vite)</h3>
+                        <h3 className=" font-bold text-primary">React.js (with Vite)</h3>
                       </div>
-                      <Badge className="bg-[#FF00FF] text-white rounded-none">{progressValues.react}%</Badge>
+                      
                     </div>
-                    <Progress
-                      value={progressValues.react}
-                      className="h-2 bg-primary/20"
-                      indicatorClassName="bg-[#FF00FF]"
-                    />
-                    <p className="font-mono text-sm text-primary/70">
+                    
+                    <p className=" text-sm text-primary/70">
                       We use React.js, the popular JavaScript library, to build highly responsive front-end interfaces,
                       while Vite speeds up the development process.
                     </p>
@@ -260,7 +213,7 @@ const DevDetails = ()=> {
                         <div className="w-8 h-8 flex items-center justify-center border-2 border-[#FF00FF] bg-[#FF00FF]/10">
                           <Palette className="h-4 w-4 text-[#FF00FF]" />
                         </div>
-                        <h3 className="font-mono font-bold text-primary">Retro Pixel Design</h3>
+                        <h3 className=" font-bold text-primary">Retro Pixel Design</h3>
                       </div>
                       <Badge className="bg-[#FF00FF] text-white rounded-none">100%</Badge>
                     </div>
@@ -273,7 +226,7 @@ const DevDetails = ()=> {
                         }}
                       ></div>
                     </div>
-                    <p className="font-mono text-sm text-primary/70">
+                    <p className=" text-sm text-primary/70">
                       All pages are designed in Retro Pixel style, adding a distinctive artistic touch that evokes the
                       nostalgia of classic video games.
                     </p>
@@ -281,7 +234,7 @@ const DevDetails = ()=> {
 
                   {/* Pixel Art Demo */}
                   <div className="border-2 border-[#FF00FF] p-4 bg-[#FF00FF]/5">
-                    <h3 className="font-mono font-bold text-primary mb-2">Pixel Art Elements</h3>
+                    <h3 className=" font-bold text-primary mb-2">Pixel Art Elements</h3>
                     <div className="grid grid-cols-5 gap-2">
                       {[...Array(5)].map((_, i) => (
                         <div
@@ -306,10 +259,10 @@ const DevDetails = ()=> {
                   <Server className="h-6 w-6 text-[#00FFFF]" />
                 </div>
                 <h2
-                  className="font-mono text-2xl font-bold text-primary"
+                  className=" text-2xl font-bold text-primary"
                   style={{ textShadow: "2px 2px 0px rgba(0,255,255,0.3)" }}
                 >
-                  Backend Technologies
+                    Backend by Badr Noukh
                 </h2>
               </div>
 
@@ -319,18 +272,13 @@ const DevDetails = ()=> {
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 flex items-center justify-center border-2 border-[#00FFFF] bg-[#00FFFF]/10">
-                        <span className="font-mono font-bold text-[#00FFFF]">L</span>
+                        <span className=" font-bold text-[#00FFFF]">L</span>
                       </div>
-                      <h3 className="font-mono font-bold text-primary">Badr Noukh Laravel</h3>
+                      <h3 className=" font-bold text-primary">Laravel +5.4</h3>
                     </div>
-                    <Badge className="bg-[#00FFFF] text-black rounded-none">{progressValues.laravel}%</Badge>
-                  </div>
-                  <Progress
-                    value={progressValues.laravel}
-                    className="h-2 bg-primary/20"
-                    indicatorClassName="bg-[#00FFFF]"
-                  />
-                  <p className="font-mono text-sm text-primary/70">
+                    </div>
+
+                  <p className=" text-sm text-primary/70">
                     We use the Laravel framework to manage requests efficiently, build modern APIs, and handle complex
                     operations seamlessly.
                   </p>
@@ -341,19 +289,14 @@ const DevDetails = ()=> {
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 flex items-center justify-center border-2 border-[#00FFFF] bg-[#00FFFF]/10">
-                        <span className="font-mono font-bold text-[#00FFFF]">PHP</span>
+                        <span className=" font-bold text-[#00FFFF]">PHP</span>
                       </div>
-                      <h3 className="font-mono font-bold text-primary">PHP 12</h3>
+                      <h3 className=" font-bold text-primary">PHP  +8.2</h3>
                     </div>
-                    <Badge className="bg-[#00FFFF] text-black rounded-none">{progressValues.php}%</Badge>
                   </div>
-                  <Progress
-                    value={progressValues.php}
-                    className="h-2 bg-primary/20"
-                    indicatorClassName="bg-[#00FFFF]"
-                  />
-                  <p className="font-mono text-sm text-primary/70">
-                    PHP 12 is used to develop server applications, ensuring high performance and secure, fast data
+
+                  <p className=" text-sm text-primary/70">
+                    PHP is used to develop server applications, ensuring high performance and secure, fast data
                     processing.
                   </p>
                 </div>
@@ -361,21 +304,21 @@ const DevDetails = ()=> {
 
               {/* Backend Architecture Visualization */}
               <div className="border-2 border-[#00FFFF] p-4 bg-[#00FFFF]/5 mt-4">
-                <h3 className="font-mono font-bold text-primary mb-4">Backend Architecture</h3>
+                <h3 className=" font-bold text-primary mb-4">Backend Architecture</h3>
                 <div className="relative h-[200px]">
                   {/* Client */}
                   <div className="absolute top-0 left-0 w-[20%] border-2 border-[#00FFFF] bg-[#00FFFF]/20 p-2">
-                    <p className="font-mono text-xs text-center">Client</p>
+                    <p className=" text-xs text-center">Client</p>
                   </div>
 
                   {/* API Layer */}
                   <div className="absolute top-[40%] left-[30%] w-[40%] border-2 border-[#00FFFF] bg-[#00FFFF]/20 p-2 transform -translate-y-1/2">
-                    <p className="font-mono text-xs text-center">Laravel API</p>
+                    <p className=" text-xs text-center">Laravel API</p>
                   </div>
 
                   {/* Database */}
                   <div className="absolute bottom-0 right-0 w-[20%] border-2 border-[#00FFFF] bg-[#00FFFF]/20 p-2">
-                    <p className="font-mono text-xs text-center">Database</p>
+                    <p className=" text-xs text-center">Database</p>
                   </div>
 
                   {/* Connection Lines */}
@@ -417,7 +360,7 @@ const DevDetails = ()=> {
                   <Database className="h-6 w-6 text-[#FFFF00]" />
                 </div>
                 <h2
-                  className="font-mono text-2xl font-bold text-primary"
+                  className=" text-2xl font-bold text-primary"
                   style={{ textShadow: "2px 2px 0px rgba(255,255,0,0.3)" }}
                 >
                   Database Technologies
@@ -429,9 +372,9 @@ const DevDetails = ()=> {
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 flex items-center justify-center border-2 border-[#FFFF00] bg-[#FFFF00]/10">
-                      <span className="font-mono font-bold text-[#FFFF00]">SQL</span>
+                      <span className=" font-bold text-[#FFFF00]">SQL</span>
                     </div>
-                    <h3 className="font-mono font-bold text-primary">MySQL</h3>
+                    <h3 className=" font-bold text-primary">MySQL</h3>
                   </div>
                   <Badge className="bg-[#FFFF00] text-black rounded-none">{progressValues.mysql}%</Badge>
                 </div>
@@ -440,54 +383,54 @@ const DevDetails = ()=> {
                   className="h-2 bg-primary/20"
                   indicatorClassName="bg-[#FFFF00]"
                 />
-                <p className="font-mono text-sm text-primary/70">
+                <p className=" text-sm text-primary/70">
                   We use MySQL to securely store and manage data with high reliability.
                 </p>
               </div>
 
               {/* Database Visualization */}
               <div className="border-2 border-[#FFFF00] p-4 bg-[#FFFF00]/5 mt-4">
-                <h3 className="font-mono font-bold text-primary mb-4">Database Structure</h3>
+                <h3 className=" font-bold text-primary mb-4">Database Structure</h3>
                 <div className="grid grid-cols-3 gap-4">
                   {/* Users Table */}
                   <div className="border-2 border-[#FFFF00] bg-[#FFFF00]/10 p-2">
-                    <p className="font-mono text-xs font-bold text-center border-b border-[#FFFF00]/30 pb-1 mb-2">
+                    <p className=" text-xs font-bold text-center border-b border-[#FFFF00]/30 pb-1 mb-2">
                       Users
                     </p>
                     <div className="space-y-1">
-                      <p className="font-mono text-xs">id (PK)</p>
-                      <p className="font-mono text-xs">username</p>
-                      <p className="font-mono text-xs">email</p>
-                      <p className="font-mono text-xs">password</p>
-                      <p className="font-mono text-xs">created_at</p>
+                      <p className=" text-xs">id (PK)</p>
+                      <p className=" text-xs">username</p>
+                      <p className=" text-xs">email</p>
+                      <p className=" text-xs">password</p>
+                      <p className=" text-xs">created_at</p>
                     </div>
                   </div>
 
                   {/* Links Table */}
                   <div className="border-2 border-[#FFFF00] bg-[#FFFF00]/10 p-2">
-                    <p className="font-mono text-xs font-bold text-center border-b border-[#FFFF00]/30 pb-1 mb-2">
+                    <p className=" text-xs font-bold text-center border-b border-[#FFFF00]/30 pb-1 mb-2">
                       Links
                     </p>
                     <div className="space-y-1">
-                      <p className="font-mono text-xs">id (PK)</p>
-                      <p className="font-mono text-xs">user_id (FK)</p>
-                      <p className="font-mono text-xs">title</p>
-                      <p className="font-mono text-xs">url</p>
-                      <p className="font-mono text-xs">created_at</p>
+                      <p className=" text-xs">id (PK)</p>
+                      <p className=" text-xs">user_id (FK)</p>
+                      <p className=" text-xs">title</p>
+                      <p className=" text-xs">url</p>
+                      <p className=" text-xs">created_at</p>
                     </div>
                   </div>
 
                   {/* Stats Table */}
                   <div className="border-2 border-[#FFFF00] bg-[#FFFF00]/10 p-2">
-                    <p className="font-mono text-xs font-bold text-center border-b border-[#FFFF00]/30 pb-1 mb-2">
+                    <p className=" text-xs font-bold text-center border-b border-[#FFFF00]/30 pb-1 mb-2">
                       Stats
                     </p>
                     <div className="space-y-1">
-                      <p className="font-mono text-xs">id (PK)</p>
-                      <p className="font-mono text-xs">link_id (FK)</p>
-                      <p className="font-mono text-xs">views</p>
-                      <p className="font-mono text-xs">actions</p>
-                      <p className="font-mono text-xs">completed</p>
+                      <p className=" text-xs">id (PK)</p>
+                      <p className=" text-xs">link_id (FK)</p>
+                      <p className=" text-xs">views</p>
+                      <p className=" text-xs">actions</p>
+                      <p className=" text-xs">completed</p>
                     </div>
                   </div>
                 </div>
@@ -501,14 +444,14 @@ const DevDetails = ()=> {
                   <Globe className="h-6 w-6 text-[#00FF00]" />
                 </div>
                 <h2
-                  className="font-mono text-2xl font-bold text-primary"
+                  className=" text-2xl font-bold text-primary"
                   style={{ textShadow: "2px 2px 0px rgba(0,255,0,0.3)" }}
                 >
                   APIs & Integrations
                 </h2>
               </div>
 
-              <p className="font-mono text-primary/70">
+              <p className=" text-primary/70">
                 We integrate with various third-party services to enhance platform functionality, such as payment
                 gateways, social media integrations, and custom APIs.
               </p>
@@ -518,13 +461,13 @@ const DevDetails = ()=> {
                 <div className="border-2 border-[#00FF00] bg-[#00FF00]/10 p-4">
                   <div className="flex items-center gap-2 mb-3">
                     <CreditCard className="h-5 w-5 text-[#00FF00]" />
-                    <h3 className="font-mono font-bold text-primary">Payment Gateways</h3>
+                    <h3 className=" font-bold text-primary">Payment Gateways</h3>
                   </div>
                   <ul className="space-y-2">
                     {["Stripe", "PayPal", "Square"].map((item, index) => (
                       <li key={index} className="flex items-start gap-2">
                         <span className="text-[#00FF00] mt-1">►</span>
-                        <span className="font-mono text-sm">{item}</span>
+                        <span className=" text-sm">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -534,13 +477,13 @@ const DevDetails = ()=> {
                 <div className="border-2 border-[#00FF00] bg-[#00FF00]/10 p-4">
                   <div className="flex items-center gap-2 mb-3">
                     <Share2 className="h-5 w-5 text-[#00FF00]" />
-                    <h3 className="font-mono font-bold text-primary">Social Media</h3>
+                    <h3 className=" font-bold text-primary">Social Media</h3>
                   </div>
                   <ul className="space-y-2">
                     {["Twitter/X API", "YouTube API", "Discord Webhooks"].map((item, index) => (
                       <li key={index} className="flex items-start gap-2">
                         <span className="text-[#00FF00] mt-1">►</span>
-                        <span className="font-mono text-sm">{item}</span>
+                        <span className=" text-sm">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -550,13 +493,13 @@ const DevDetails = ()=> {
                 <div className="border-2 border-[#00FF00] bg-[#00FF00]/10 p-4">
                   <div className="flex items-center gap-2 mb-3">
                     <Zap className="h-5 w-5 text-[#00FF00]" />
-                    <h3 className="font-mono font-bold text-primary">Custom APIs</h3>
+                    <h3 className=" font-bold text-primary">Custom APIs</h3>
                   </div>
                   <ul className="space-y-2">
                     {["Link Tracking", "Analytics", "User Management"].map((item, index) => (
                       <li key={index} className="flex items-start gap-2">
                         <span className="text-[#00FF00] mt-1">►</span>
-                        <span className="font-mono text-sm">{item}</span>
+                        <span className=" text-sm">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -565,28 +508,28 @@ const DevDetails = ()=> {
 
               {/* API Flow Visualization */}
               <div className="border-2 border-[#00FF00] p-4 bg-[#00FF00]/5 mt-4">
-                <h3 className="font-mono font-bold text-primary mb-4">API Integration Flow</h3>
+                <h3 className=" font-bold text-primary mb-4">API Integration Flow</h3>
                 <div className="relative h-[200px]">
                   {/* S2U Platform */}
                   <div className="absolute top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 w-[30%] border-2 border-[#00FF00] bg-[#00FF00]/20 p-2 z-10">
-                    <p className="font-mono text-xs text-center font-bold">S2U Platform</p>
+                    <p className=" text-xs text-center font-bold">S2U Platform</p>
                   </div>
 
                   {/* External Services */}
                   <div className="absolute top-[20%] left-[10%] w-[20%] border-2 border-[#00FF00] bg-[#00FF00]/20 p-2">
-                    <p className="font-mono text-xs text-center">Payment APIs</p>
+                    <p className=" text-xs text-center">Payment APIs</p>
                   </div>
 
                   <div className="absolute top-[20%] right-[10%] w-[20%] border-2 border-[#00FF00] bg-[#00FF00]/20 p-2">
-                    <p className="font-mono text-xs text-center">Social Media APIs</p>
+                    <p className=" text-xs text-center">Social Media APIs</p>
                   </div>
 
                   <div className="absolute bottom-[20%] left-[10%] w-[20%] border-2 border-[#00FF00] bg-[#00FF00]/20 p-2">
-                    <p className="font-mono text-xs text-center">Analytics APIs</p>
+                    <p className=" text-xs text-center">Analytics APIs</p>
                   </div>
 
                   <div className="absolute bottom-[20%] right-[10%] w-[20%] border-2 border-[#00FF00] bg-[#00FF00]/20 p-2">
-                    <p className="font-mono text-xs text-center">Custom APIs</p>
+                    <p className=" text-xs text-center">Custom APIs</p>
                   </div>
 
                   {/* Connection Lines */}
@@ -622,7 +565,7 @@ const DevDetails = ()=> {
                   <Wrench className="h-6 w-6 text-[#FF8C00]" />
                 </div>
                 <h2
-                  className="font-mono text-2xl font-bold text-primary"
+                  className=" text-2xl font-bold text-primary"
                   style={{ textShadow: "2px 2px 0px rgba(255,140,0,0.3)" }}
                 >
                   Development Tools
@@ -637,7 +580,7 @@ const DevDetails = ()=> {
                       <div className="w-8 h-8 flex items-center justify-center border-2 border-[#FF8C00] bg-[#FF8C00]/10">
                         <Github className="h-4 w-4 text-[#FF8C00]" />
                       </div>
-                      <h3 className="font-mono font-bold text-primary">Git</h3>
+                      <h3 className=" font-bold text-primary">Git</h3>
                     </div>
                     <Badge className="bg-[#FF8C00] text-white rounded-none">{progressValues.git}%</Badge>
                   </div>
@@ -646,7 +589,7 @@ const DevDetails = ()=> {
                     className="h-2 bg-primary/20"
                     indicatorClassName="bg-[#FF8C00]"
                   />
-                  <p className="font-mono text-sm text-primary/70">
+                  <p className=" text-sm text-primary/70">
                     For flexible and efficient version control and team collaboration.
                   </p>
                 </div>
@@ -658,7 +601,7 @@ const DevDetails = ()=> {
                       <div className="w-8 h-8 flex items-center justify-center border-2 border-[#FF8C00] bg-[#FF8C00]/10">
                         <Figma className="h-4 w-4 text-[#FF8C00]" />
                       </div>
-                      <h3 className="font-mono font-bold text-primary">Figma</h3>
+                      <h3 className=" font-bold text-primary">Figma</h3>
                     </div>
                     <Badge className="bg-[#FF8C00] text-white rounded-none">{progressValues.figma}%</Badge>
                   </div>
@@ -667,7 +610,7 @@ const DevDetails = ()=> {
                     className="h-2 bg-primary/20"
                     indicatorClassName="bg-[#FF8C00]"
                   />
-                  <p className="font-mono text-sm text-primary/70">
+                  <p className=" text-sm text-primary/70">
                     The design tool we use to plan interfaces and user experiences, ensuring smooth and consistent
                     design work.
                   </p>
@@ -676,7 +619,7 @@ const DevDetails = ()=> {
 
               {/* Development Process */}
               <div className="border-2 border-[#FF8C00] p-4 bg-[#FF8C00]/5 mt-4">
-                <h3 className="font-mono font-bold text-primary mb-4">Development Process</h3>
+                <h3 className=" font-bold text-primary mb-4">Development Process</h3>
                 <div className="relative">
                   <div className="flex justify-between items-center">
                     {["Design", "Develop", "Test", "Deploy", "Maintain"].map((step, index) => (
@@ -684,11 +627,11 @@ const DevDetails = ()=> {
                         <div
                           className={`w-12 h-12 flex items-center justify-center border-2 border-[#FF8C00] ${index <= 3 ? "bg-[#FF8C00]" : "bg-[#FF8C00]/20"}`}
                         >
-                          <span className={`font-mono font-bold ${index <= 3 ? "text-black" : "text-[#FF8C00]"}`}>
+                          <span className={` font-bold ${index <= 3 ? "text-black" : "text-[#FF8C00]"}`}>
                             {index + 1}
                           </span>
                         </div>
-                        <p className="font-mono text-xs mt-2">{step}</p>
+                        <p className=" text-xs mt-2">{step}</p>
                         {index <= 3 && <CheckCircle className="h-4 w-4 text-[#FF8C00] mt-1" />}
                       </div>
                     ))}
@@ -712,20 +655,20 @@ const DevDetails = ()=> {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="space-y-4">
               <h2
-                className="font-mono text-xl font-bold text-primary"
+                className=" text-xl font-bold text-primary"
                 style={{ textShadow: "2px 2px 0px rgba(255,0,255,0.3)" }}
               >
                 Have Questions About Our Tech Stack?
               </h2>
 
-              <p className="font-mono text-primary/70">
+              <p className=" text-primary/70">
                 We believe in using the best tools and technologies to deliver an amazing experience for our users,
                 ensuring speed, efficiency, and security.
               </p>
             </div>
 
             <Button
-              className="font-mono bg-[#FF00FF] hover:bg-[#CC00CC] text-white border-none rounded-none shrink-0"
+              className=" bg-[#FF00FF] hover:bg-[#CC00CC] text-white border-none rounded-none shrink-0"
               style={{ boxShadow: "4px 4px 0px 0px rgba(255,0,255,0.3)" }}
               onClick={() => (window.location.href = "/contact")}
             >
@@ -735,7 +678,7 @@ const DevDetails = ()=> {
         </Card>
 
         {/* Footer */}
-        <div className="text-center font-mono text-xs text-primary/50 space-y-2">
+        <div className="text-center  text-xs text-primary/50 space-y-2">
           <p>© {new Date().getFullYear()} s2u. All rights reserved.</p>
         </div>
       </div>

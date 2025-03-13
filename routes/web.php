@@ -9,9 +9,6 @@ Route::get('/', function () {
     return Inertia::render('Home/Index',compact('bg_img'));
 });
 // These pages have an error!!!!.
-Route::get('/videotuto', function () {
-    return Inertia::render('VideoTuto');
-});
 Route::get('/devdetails', function () {
     return Inertia::render('DevDetails');
 });
