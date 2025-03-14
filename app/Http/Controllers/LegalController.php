@@ -16,7 +16,7 @@ class LegalController extends Controller
     }
     public function contact()
     {
-        return Inertia::render('contact');
+        return Inertia::render('Contact');
     }
     public function PrivacyPolicy()
     {

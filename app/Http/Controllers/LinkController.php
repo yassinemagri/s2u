@@ -13,10 +13,12 @@ class LinkController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         // ->where('user_id', Auth::id())
-        $links = Link::latest()->with('user:id,username')->paginate(7);
+        $query = Link::query();
+        if ($request->filled('title')) $query->where('title',"LIKE","%{$request->title}%");
+        $links = $query->latest()->with('user:id,username')->paginate(7)->withQueryString();
         return Inertia::render('Links/Index',compact('links'));
     }
 
