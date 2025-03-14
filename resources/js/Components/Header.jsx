@@ -111,7 +111,7 @@ export default function Header() {
                                         : "Continue Your Quest"}
                                 </DropdownMenuLabel>
                                 <DropdownMenuSeparator />
-                                {/* Site Contents  */}
+                                {/* Site Privacy Policy  */}
                                 <DropdownMenuRadioGroup>
                                     {[
                                         {
