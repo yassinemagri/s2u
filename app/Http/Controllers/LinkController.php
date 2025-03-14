@@ -57,8 +57,9 @@ class LinkController extends Controller
      */
     public function edit(Link $link)
     {
-
-        return Inertia::render('Links/Edit');
+        $link->loadMissing('user');
+        // if($link->user->id !== Auth::id()) return redirect('/');
+        return Inertia::render('Links/Edit',compact("link"));
     }
 
     /**

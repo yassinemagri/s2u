@@ -1,38 +1,15 @@
+import React, {useState} from "react"
+import Layout from "@/Components/layout/Layout";
 import { Button } from "@/Components/ui/button";
 import { Card } from "@/Components/ui/card";
-import { CheckSquare } from "lucide-react";
-import React from "react";
+import { CheckSquare, Copy, ExternalLink } from "lucide-react";
 
-const Edit = () => {
-    const links = [
-        {
-            id: "1",
-            title: "SUB TO UNLOCK!",
-            description: "A classic S2U Link",
-            url: "https://sub2unlock.com/qknAT",
-            views: 5,
-            actions: 2,
-            completed: 1,
-        },
-        {
-            id: "2",
-            title: "sayq101",
-            description: "sayq101 sas",
-            url: "https://sub2unlock.com/vkMMy",
-            views: 4,
-            actions: 2,
-            completed: 2,
-        },
-    ];
-
+const Edit = ({link}) => {
+    console.log(link)
     const [copiedId, setCopiedId] = useState(null);
     const copyToClipboard = (text) => {
         navigator.clipboard.writeText(text);
         setCopiedId(id);
-
-        // Create glitch effect
-        setGlitchEffect(true);
-        setTimeout(() => setGlitchEffect(false), 150);
 
         toast({
             title: "Link copied!",
@@ -58,12 +35,9 @@ const Edit = () => {
 
                 {/* Links Grid */}
                 <div className="space-y-4">
-                    {links.map((link) => (
                         <Card
-                            key={link.id}
-                            className={`p-6 rounded-none border-2 border-primary bg-background/50 hover:bg-background/80 transition-colors ${
-                                glitchEffect ? "translate-x-[1px]" : ""
-                            }`}
+                            
+                            className={`p-6 rounded-none border-2 border-primary bg-background/50 hover:bg-background/80 transition-colors`}
                             style={{
                                 boxShadow:
                                     "4px 4px 0px 0px rgba(255,255,255,0.1)",
@@ -78,7 +52,7 @@ const Edit = () => {
                                         {link.description}
                                     </p>
                                     <p className="font-mono text-xs text-primary/50">
-                                        {link.url}
+                                        {link.channel_link}
                                     </p>
                                 </div>
 
@@ -88,7 +62,7 @@ const Edit = () => {
                                         size="sm"
                                         className="font-mono border-2 border-primary bg-background text-primary hover:bg-primary hover:text-primary-foreground rounded-none"
                                         onClick={() =>
-                                            window.open(link.url, "_blank")
+                                            window.open(link.channel_link, "_blank")
                                         }
                                     >
                                         <ExternalLink className="mr-2 h-4 w-4" />
@@ -111,40 +85,11 @@ const Edit = () => {
                                     </Button>
                                 </div>
                             </div>
-
-                            {/* Link Metrics */}
-                            <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-primary/20">
-                                <div>
-                                    <p className="font-mono text-xs text-primary/50">
-                                        Views
-                                    </p>
-                                    <p className="font-mono text-sm font-bold text-[#FF8C00]">
-                                        {link.views}
-                                    </p>
-                                </div>
-                                <div>
-                                    <p className="font-mono text-xs text-primary/50">
-                                        Actions
-                                    </p>
-                                    <p className="font-mono text-sm font-bold text-[#FF00FF]">
-                                        {link.actions}
-                                    </p>
-                                </div>
-                                <div>
-                                    <p className="font-mono text-xs text-primary/50">
-                                        Completed
-                                    </p>
-                                    <p className="font-mono text-sm font-bold text-[#00FFFF]">
-                                        {link.completed}
-                                    </p>
-                                </div>
-                            </div>
                         </Card>
-                    ))}
                 </div>
             </div>
         </>
     );
 };
-
+Edit.layout = (page) => <Layout children={page} />
 export default Edit;
