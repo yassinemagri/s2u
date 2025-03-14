@@ -26,8 +26,6 @@ import { router, usePage, useForm } from "@inertiajs/react";
 
 const LinksPage = ({ links }) => {
     const [linksData, setLinksData] = useState(links);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [searchTerm, setSearchTerm] = useState("");
     const [loading, setLoading] = useState(false);
     const [copiedId, setCopiedId] = useState(null);
     const [glitchEffect, setGlitchEffect] = useState(false);
@@ -35,7 +33,7 @@ const LinksPage = ({ links }) => {
     const { data, setData, get, processing, errors } = useForm({
         title: "",
     });
-
+    
     // Format date to a more readable format
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -63,6 +61,7 @@ const LinksPage = ({ links }) => {
     const handleSearch = (e) => {
         e.preventDefault();
         get(`my-links`)
+        setLoading(true)
     };
 
     // Truncate long text
