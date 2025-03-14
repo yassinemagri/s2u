@@ -25,7 +25,6 @@ import Layout from "@/Components/layout/Layout"
 
 
 const LinksPage= ({links})=> {
-  console.log(links)
   const [linksData, setLinksData] = useState(links)
   const [currentPage, setCurrentPage] = useState(1)
   const [searchTerm, setSearchTerm] = useState("")

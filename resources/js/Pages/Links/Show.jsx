@@ -1,16 +1,13 @@
-"use client";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Youtube, Moon, Sun } from "lucide-react";
-import { useParams } from "react-router-dom";
 import Layout from "@/Components/layout/Layout";
 
-const Show = ({links})=> {
-  const { id } = useParams();
+const Show = (props)=> {
+  console.log(props)
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [countdown, setCountdown] = useState(3);
-  const [isDarkMode, setIsDarkMode] = useState(true);
-  const [apiData, setapiData] = useState(links);
+  const [apiData, setapiData] = useState('links');
 
   useEffect(() => {
     let timer;
@@ -43,35 +40,19 @@ const Show = ({links})=> {
     window.open(apiData?.unlockUrl, "_blank", "noopener,noreferrer");
   };
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark");
-  };
-  console.log(apiData);
+
 
   return (
     <div
-      className={`flex min-h-screen items-center  justify-center font-Pixel p-4 ${
-        isDarkMode ? "dark" : ""
-      }`}
+      className={`flex min-h-screen items-center  justify-center font-Pixel p-4}`}
     >
       <div
         className="relative w-full max-w-2xl min-h-[400px] border-4 border-primary backdrop-blur-[10.4px] bg-[#0000007a] p-8 text-primary shadow-[8px_8px_0px_0px] shadow-primary/50 dark:shadow-primary/30"
         style={{ imageRendering: "pixelated" }}
       >
-        <button
-          onClick={toggleDarkMode}
-          className="absolute top-4 right-4 p-2 rounded-full hover:bg-muted cursor-pointer"
-          aria-label="Toggle dark mode"
-        >
-          {isDarkMode ? (
-            <Sun className="h-5 w-5" />
-          ) : (
-            <Moon className="h-5 w-5" />
-          )}
-        </button>
+
         {!isSubscribed ? (
-          <div key={id}>
+          <div key={'id'}>
             <h1
               className="mb-16  text-2xl font-bold uppercase tracking-wider "
               style={{ textShadow: "2px 2px 0px #FF00FF" }}
