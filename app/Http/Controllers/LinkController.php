@@ -46,9 +46,11 @@ class LinkController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Link $link)
     {
-        return Inertia::render('Links/Show');
+        $link->loadMissing('user');
+
+        return Inertia::render('Links/Show',compact("link"));
     }
 
     /**
