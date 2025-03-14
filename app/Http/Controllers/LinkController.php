@@ -15,7 +15,8 @@ class LinkController extends Controller
      */
     public function index()
     {
-        $links = Link::latest()->where('user_id', Auth::id())->with('user:id,username')->paginate(7);
+        // ->where('user_id', Auth::id())
+        $links = Link::latest()->with('user:id,username')->paginate(7);
         return Inertia::render('Links/Index',compact('links'));
     }
 
