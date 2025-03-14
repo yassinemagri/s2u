@@ -42,7 +42,6 @@ class LinkController extends Controller
         Link::create($validated);
         return Redirect::route('my-links')->with('success', 'Your link has been generated.');
     }
-
     /**
      * Display the specified resource.
      */
@@ -77,8 +76,8 @@ class LinkController extends Controller
             'channel_link' => ['required',"min:25","url"],
             'description' => ["min:0", "max:255"],
         ]);
-        Link::update($validated);
-        return Redirect::route("/link".$link->id)->with('success', 'Your link has been Updated.');
+        Link::where("user_id",Auth::id())->where('id',$link->id)->update($validated);
+        return Redirect("/link/".$link->id)->with('success', 'Your link has been Updated.');
     }
 
     /**

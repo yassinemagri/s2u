@@ -21,12 +21,15 @@ Route::fallback(function () {
 });
 
 // links routes
-Route::get('/my-links',[LinkController::class,'index'])->name('my-links')->middleware('auth');
-Route::get('/link/create',[LinkController::class,'create'])->middleware('auth');
-Route::get('/link/{link}',[LinkController::class,'show']);
-Route::post('/link',[LinkController::class,'store'])->middleware('auth');
-Route::get('/link/{link}/edit',[LinkController::class,'edit']);
-Route::delete('/link/{link}',[LinkController::class,'destroy']);
+Route::middleware("auth")->group(function() {
+    Route::get('/my-links',[LinkController::class,'index'])->name('my-links');
+    Route::get('/link/create',[LinkController::class,'create']);
+    Route::get('/link/{link}',[LinkController::class,'show'])->name('link.ed');
+    Route::post('/link',[LinkController::class,'store']);
+    Route::get('/link/{link}/edit',[LinkController::class,'edit']);
+    Route::put('/link/{link}',[LinkController::class,'update']);
+    Route::delete('/link/{link}',[LinkController::class,'destroy']);
+});
 
 require __DIR__.'/auth.php';
 
