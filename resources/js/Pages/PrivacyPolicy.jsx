@@ -260,14 +260,6 @@ const PrivacyPolicyPage = ()=> {
           </div>
         </Card>
 
-        {/* Footer */}
-        <div className="text-center  text-xs text-primary/50 space-y-2">
-          <div className="flex justify-center gap-2">
-            <Cookie className="h-4 w-4" />
-            <span>This site uses cookies to enhance your experience.</span>
-          </div>
-          <p>© {new Date().getFullYear()} Shtark. All rights reserved.</p>
-        </div>
       </div>
 
       <style jsx>{`
