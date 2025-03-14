@@ -19,6 +19,7 @@ Route::get('/terms-and-conditions',[LegalController::class, 'TermsAndConditions'
 Route::fallback(function () {
     return Inertia::render('NotFound')->toResponse(request())->setStatusCode(404);
 });
+
 // links routes
 Route::get('/my-links',[LinkController::class,'index'])->name('my-links')->middleware('auth');
 Route::get('/link/create',[LinkController::class,'create'])->middleware('auth');

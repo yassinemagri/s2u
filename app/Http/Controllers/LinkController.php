@@ -49,15 +49,15 @@ class LinkController extends Controller
     public function show(Link $link)
     {
         $link->loadMissing('user');
-
         return Inertia::render('Links/Show',compact("link"));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Link $link)
     {
+
         return Inertia::render('Links/Edit');
     }
 
