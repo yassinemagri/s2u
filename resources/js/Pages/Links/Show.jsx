@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { CircleHelp, Clock8, ExternalLink, Youtube, Star, Lock, Unlock, ChevronRight } from "lucide-react"
+import { CircleHelp, Clock8, ExternalLink, Youtube, Star, Lock, Unlock, ChevronRight, ListCheck } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
@@ -118,7 +118,8 @@ const Show = ({ link })=> {
             />
           ))}
         </div>
-
+        {/* message updeted section  */}
+        <div className="fixed z-40 flex text-primary"><ListCheck /> updated</div>
         {/* Pixel Clouds */}
         <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[#1a0042] to-transparent" />
         <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#1a0042] to-transparent" />
