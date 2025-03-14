@@ -21,6 +21,7 @@ import {
   User,
 } from "lucide-react"
 import Layout from "@/Components/layout/Layout"
+import { router, usePage } from "@inertiajs/react"
 
 
 
@@ -31,7 +32,8 @@ const LinksPage= ({links})=> {
   const [loading, setLoading] = useState(false)
   const [copiedId, setCopiedId] = useState(null)
   const [glitchEffect, setGlitchEffect] = useState(false)
-
+  const {flash} = usePage().props
+  console.log(links)
   // In a real app, this would fetch from an API
   const fetchLinks = (page) => {
     setLoading(true)
@@ -275,10 +277,18 @@ const LinksPage= ({links})=> {
                       <Button
                         className="font-mono bg-[#FF00FF] hover:bg-[#CC00CC] text-white border-none rounded-none w-full"
                         style={{ boxShadow: "3px 3px 0px 0px rgba(255,0,255,0.3)" }}
-                        onClick={() => window.open(`/link/${link.id}/edit`)}
+                        onClick={() =>router.visit(`/link/${link.id}/edit`)}
                       >
                         <ExternalLink className="mr-2 h-4 w-4" />
                         Edit
+                      </Button>
+                      <Button
+                        className="font-mono bg-[#FF00FF] hover:bg-[#CC00CC] text-white border-none rounded-none w-full"
+                        style={{ boxShadow: "3px 3px 0px 0px rgba(255,0,255,0.3)" }}
+                        onClick={() =>router.visit(`/link/${link.id}`)}
+                      >
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        Show
                       </Button>
 
                       <Button

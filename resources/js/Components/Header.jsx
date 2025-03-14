@@ -118,7 +118,7 @@ export default function Header() {
                                             className="list-none cursor-pointer"
                                         >
                                             <Link
-                                                href={''}
+                                                href={'/my-links'}
                                                 className="flex items-center text-primary hover:text-primary/80 transition-colors"
                                                 style={{
                                                     textShadow:
