@@ -77,14 +77,18 @@ class LinkController extends Controller
             'description' => ["min:0", "max:255"],
         ]);
         Link::where("user_id",Auth::id())->where('id',$link->id)->update($validated);
-        return Redirect("/link/".$link->id)->with('success', 'Your link has been Updated.');
+        return Redirect('/link/'.$link->id)->with('success', 'Your link has been Updated.');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Link $link,  Request $request)
     {
-        dd("DELETING YOUR POST GOES HERE");
+        if ($request->user()->cannot('delete', $link)) {
+            abort(403);
+        }
+        Link::where('id', $link->id)->delete();
+        return Redirect::route('my-links')->with('success', 'Your link has been Deleted.');
     }
 }
