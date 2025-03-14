@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { GamepadIcon as GameController, LogOut, Youtube } from "lucide-react";
+import {
+    CodeXml,
+    Contact,
+    GamepadIcon as GameController,
+    Handshake,
+    LogOut,
+    ShieldCheck,
+    Youtube,
+} from "lucide-react";
 import { Link, router, usePage } from "@inertiajs/react";
 import {
     DropdownMenu,
@@ -15,20 +23,38 @@ export default function Header() {
     const navList = [
         {
             name: "home",
-            url:"/"
+            url: "/",
         },
         {
             name: "About Us",
-            url:"/about"
+            url: "/about",
         },
         {
             name: "Create Links",
-            url:"/link/create"
+            url: "/link/create",
         },
     ];
-    const urlPage = usePage().url
+    const siteContents = [
+        {
+            name: "Terms & Conditions",
+            url: "/terms-and-conditions",
+        },
+        {
+            name: "Privacy Policy",
+            url: "/privacy-policy",
+        },
+        {
+            name: "Contact",
+            url: "/contact",
+        },
+        {
+            name: "Developers",
+            url: "/developers",
+        },
+    ];
+    const urlPage = usePage().url;
     const [renderHtml, setRenderHtml] = useState(usePage().url);
-    useEffect(()=>{
+    useEffect(() => {
         const render_Html = navList.map((nav, i) => {
             if (nav.url !== urlPage) {
                 return (
@@ -42,9 +68,9 @@ export default function Header() {
                     </li>
                 );
             }
-        })
-        setRenderHtml(render_Html)
-    },[usePage().url])
+        });
+        setRenderHtml(render_Html);
+    }, [usePage().url]);
     return (
         <header className="font-bold text-lg backdrop-blur-[10.4px] bg-[#ffffff14] border-b border-primary/20 py-4 capitalize">
             <div className="container mx-auto px-4 flex justify-between items-center">
@@ -85,6 +111,58 @@ export default function Header() {
                                         : "Continue Your Quest"}
                                 </DropdownMenuLabel>
                                 <DropdownMenuSeparator />
+                                {/* Site Contents  */}
+                                <DropdownMenuRadioGroup>
+                                    {[
+                                        {
+                                            name: "Terms & Conditions",
+                                            url: "/terms-and-conditions",
+                                            icon: (
+                                                <ShieldCheck className="w-4 mx-2 hover:stroke-primary/80 transition-colors" />
+                                            ),
+                                        },
+                                        {
+                                            name: "Privacy Policy",
+                                            url: "/privacy-policy",
+                                            icon: (
+                                                <Handshake className="w-4 mx-2 hover:stroke-primary/80 transition-colors" />
+                                            ),
+                                        },
+                                        {
+                                            name: "Contact",
+                                            url: "/contact",
+                                            icon: (
+                                                <Contact className="w-4 mx-2 hover:stroke-primary/80 transition-colors" />
+                                            ),
+                                        },
+                                        {
+                                            name: "Developers",
+                                            url: "/developers",
+                                            icon: (
+                                                <CodeXml className="w-4 mx-2 hover:stroke-primary/80 transition-colors" />
+                                            ),
+                                        },
+                                    ].map(({ name, url, icon }) => (
+                                        <li
+                                            key={name}
+                                            className="list-none cursor-pointer"
+                                        >
+                                            <Link
+                                                href={url}
+                                                className="flex items-center text-primary hover:text-primary/80 transition-colors"
+                                                style={{
+                                                    textShadow:
+                                                        "1px 1px 0px #00FFFF",
+                                                }}
+                                            >
+                                                {icon}
+                                                {name}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </DropdownMenuRadioGroup>
+                                <hr class="h-px my-1 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+                                {/* users */}
                                 <DropdownMenuRadioGroup>
                                     {" "}
                                     {auth.user ? (
@@ -131,7 +209,7 @@ export default function Header() {
                                     {auth.user && (
                                         <DropdownMenuRadioItem
                                             value="right"
-                                            className="cursor-pointer uppercase bg-transparent text-primary text-xl hover:text-primary/80"
+                                            className="flex items-center cursor-pointer uppercase bg-transparent text-primary text-xl hover:text-primary/80"
                                             onClick={() =>
                                                 router.delete("/logout")
                                             }

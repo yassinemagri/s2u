@@ -13,7 +13,7 @@ Route::get('/', function () {
 Route::get('/about',[LegalController::class,'about']);
 Route::get('/contact',[LegalController::class,'contact']);
 Route::get('/privacy-policy',[LegalController::class,'privacyPolicy']);
-Route::get('/devdetails',[LegalController::class,'DevDetails']);
+Route::get('/developers',[LegalController::class,'DevDetails']);
 Route::get('/terms-and-conditions',[LegalController::class, 'TermsAndConditions']);
 // page 404
 Route::fallback(function () {
