@@ -55,19 +55,30 @@ class LinkController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Link $link)
+    public function edit(Link $link, Request $request)
     {
-        $link->loadMissing('user');
-        // if($link->user->id !== Auth::id()) return redirect('/');
+        if ($request->user()->cannot('view', $link)) {
+            abort(403);
+        }
         return Inertia::render('Links/Edit',compact("link"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Link $link)
     {
-        //
+        if ($request->user()->cannot('update', $link)) {
+            abort(403);
+        }
+        $validated = $request->validate([
+            'title' => ['required',"min:8", "max:100"],
+            'unlock_link' => ['required',"min:10","url"],       
+            'channel_link' => ['required',"min:25","url"],
+            'description' => ["min:0", "max:255"],
+        ]);
+        Link::update($validated);
+        return Redirect::route("/link".$link->id)->with('success', 'Your link has been Updated.');
     }
 
     /**
