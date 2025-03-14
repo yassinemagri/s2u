@@ -677,10 +677,6 @@ const DevDetails = ()=> {
           </div>
         </Card>
 
-        {/* Footer */}
-        <div className="text-center  text-xs text-primary/50 space-y-2">
-          <p>© {new Date().getFullYear()} s2u. All rights reserved.</p>
-        </div>
       </div>
 
       <style jsx>{`
