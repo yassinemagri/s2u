@@ -272,6 +272,14 @@ const LinksPage= ({links})=> {
                         <ExternalLink className="mr-2 h-4 w-4" />
                         Unlock
                       </Button>
+                      <Button
+                        className="font-mono bg-[#FF00FF] hover:bg-[#CC00CC] text-white border-none rounded-none w-full"
+                        style={{ boxShadow: "3px 3px 0px 0px rgba(255,0,255,0.3)" }}
+                        onClick={() => window.open(`/link/${link.id}/edit`)}
+                      >
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        Edit
+                      </Button>
 
                       <Button
                         variant="outline"

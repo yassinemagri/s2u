@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import Layout from "@/Components/layout/Layout"
+import { usePage } from "@inertiajs/react"
 
 // Function to format relative time
 const getRelativeTime = (timestamp) => {
@@ -30,8 +31,9 @@ const Show = ({ link })=> {
   const [glitchEffect, setGlitchEffect] = useState(false)
   const [showTooltip, setShowTooltip] = useState(false)
   const [subscribeProgress, setSubscribeProgress] = useState(0)
-  const { id, title, unlock_link, channel_link, description, updated_at } = link
-
+  const { id, title, unlock_link, channel_link, description, updated_at } = link;
+  const {flash} = usePage().props
+  // console.log(usePage())
   // Random glitch effect
   useEffect(() => {
     const glitchInterval = setInterval(() => {
