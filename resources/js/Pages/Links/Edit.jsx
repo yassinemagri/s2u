@@ -59,8 +59,6 @@ const Edit = ({link}) => {
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4 relative overflow-hidden">
-
-
             {/* Background Effects */}
             <div className="absolute inset-0 bg-gradient-to-b from-background to-background/80 z-0">
                 {/* Decorative elements */}
