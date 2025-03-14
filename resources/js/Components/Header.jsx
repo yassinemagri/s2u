@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
     CodeXml,
     Contact,
+    Edit,
     GamepadIcon as GameController,
     Handshake,
     LogOut,
@@ -112,8 +113,25 @@ export default function Header() {
                                 </DropdownMenuLabel>
                                 <DropdownMenuSeparator />
                                 {/* posts  */}
-
-                                
+                                <DropdownMenuRadioGroup>
+                                        <li
+                                            className="list-none cursor-pointer"
+                                        >
+                                            <Link
+                                                href={''}
+                                                className="flex items-center text-primary hover:text-primary/80 transition-colors"
+                                                style={{
+                                                    textShadow:
+                                                        "1px 1px 0px #00FFFF",
+                                                }}
+                                            >
+                                                <Edit className="w-4 mx-2 hover:stroke-primary/80 transition-colors" />
+                                                My Links
+                                            </Link>
+                                        </li>
+                                   
+                                </DropdownMenuRadioGroup>
+                                <hr class="h-px my-1 bg-gray-200 border-0 dark:bg-gray-700"></hr>
                                 {/* Site Privacy Policy  */}
                                 <DropdownMenuRadioGroup>
                                     {[
