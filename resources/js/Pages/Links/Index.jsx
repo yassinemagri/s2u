@@ -298,7 +298,8 @@ const LinksPage = ({ links }) => {
                                         {/* Action Buttons */}
                                         <div className="flex flex-row md:flex-col justify-center gap-3 md:border-l md:border-primary/20 md:pl-6">
                                             <Button
-                                                className="bg-[#FF00FF] hover:bg-[#CC00CC] text-white border-none rounded-none"
+                                                className="border-2 cursor-pointer border-[#CC00CC] bg-transparent hover:bg-[#CC00CC] text-white rounded-none
+"
                                                 style={{
                                                     boxShadow:
                                                         "3px 3px 0px 0px rgba(255,0,255,0.3)",
@@ -314,8 +315,7 @@ const LinksPage = ({ links }) => {
                                                 Unlock
                                             </Button>
                                             <Button
-                                                variant="outline"
-                                                className="border-2 cursor-pointer border-primary bg-background text-primary hover:bg-primary hover:text-primary-foreground rounded-none"
+                                                className="border-2 cursor-pointer border-red-500 bg-background hover:bg-red-500 text-primary rounded-none"
                                                 onClick={() =>
                                                     window.open(
                                                         link.channel_link,
@@ -323,11 +323,11 @@ const LinksPage = ({ links }) => {
                                                     )
                                                 }
                                             >
-                                                <Youtube className="mr-2 h-4 w-4 text-red-500" />
+                                                <Youtube className="mr-2 h-4 w-4 " />
                                                 Channel
                                             </Button>
                                             <Button
-                                                className="mx-4 cursor-pointer border-2 border-green-600 hover:border-transparent bg-transparent text-primary hover:bg-green-600 hover:text-white transition-colors rounded-none"
+                                                className="cursor-pointer border-2 border-green-600 hover:border-transparent bg-transparent text-primary hover:bg-green-600 hover:text-white transition-colors rounded-none"
                                                 style={{
                                                     boxShadow:
                                                         "4px 4px 0px 0px rgba(255,255,255,0.2)",
@@ -342,7 +342,7 @@ const LinksPage = ({ links }) => {
                                                 Edit
                                             </Button>
                                             <Button
-                                                className="mx-4 cursor-pointer border-2 border-green-600 hover:border-transparent bg-transparent text-primary hover:bg-green-600 hover:text-white transition-colors rounded-none"
+                                                className="cursor-pointer border-2 border-green-600 hover:border-transparent bg-transparent text-primary hover:bg-green-600 hover:text-white transition-colors rounded-none"
                                                 style={{
                                                     boxShadow:
                                                         "4px 4px 0px 0px rgba(255,255,255,0.2)",

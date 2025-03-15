@@ -22,7 +22,7 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Layout from "@/Components/layout/Layout";
-import { router, usePage } from "@inertiajs/react";
+import { router, useForm, usePage } from "@inertiajs/react";
 import {
     AlertDialog,
     AlertDialogAction,
@@ -52,22 +52,26 @@ const getRelativeTime = (timestamp) => {
 const Show = ({ link }) => {
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [countdown, setCountdown] = useState(3);
-    const [glitchEffect, setGlitchEffect] = useState(false);
     const [showTooltip, setShowTooltip] = useState(false);
     const [subscribeProgress, setSubscribeProgress] = useState(0);
     const { id, title, unlock_link, channel_link, description, updated_at } =
         link;
     const { flash } = usePage().props;
-    // Random glitch effect
-    useEffect(() => {
-        const glitchInterval = setInterval(() => {
-            setGlitchEffect(true);
-            setTimeout(() => setGlitchEffect(false), 150);
-        }, 5000);
-
-        return () => clearInterval(glitchInterval);
-    }, []);
-
+    const [rating, setRating] = useState(link.rating);
+    const [hover, setHover] = useState(0);
+    const {data,setData, post} = useForm({
+        rating: link.rating || 0,
+        link_id: link.id
+    })
+    // rating 
+    const HandleRating = (newRating)=> {
+        setRating(newRating)
+        setData({rating: newRating})
+    }
+    function HandleSubmitRating(e){
+        e.preventDefualt()
+        post('/rating')
+    }
     // Countdown and blur handler
     useEffect(() => {
         const handleBlur = () => {
@@ -110,9 +114,6 @@ const Show = ({ link }) => {
             if (progress >= 100) {
                 clearInterval(progressInterval);
                 setIsSubscribed(true);
-                // Create glitch effect
-                setGlitchEffect(true);
-                setTimeout(() => setGlitchEffect(false), 150);
             }
         }, 900);
 
@@ -127,25 +128,10 @@ const Show = ({ link }) => {
         <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
             {/* Animated Background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                {/* Stars */}
-                <div className="absolute inset-0">
-                    {[...Array(50)].map((_, i) => (
-                        <div
-                            key={i}
-                            className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
-                            style={{
-                                top: `${Math.random() * 100}%`,
-                                left: `${Math.random() * 100}%`,
-                                animationDelay: `${Math.random() * 3}s`,
-                                opacity: Math.random() * 0.7 + 0.3,
-                            }}
-                        />
-                    ))}
-                </div>
                 {/* message updeted section  */}
                 {flash.success && (
-                    <div className="absolute z-40 flex text-primary top-[4rem] left-[50%]">
-                        <Check /> {flash.success}
+                    <div className="flex  items-center absolute z-90 text-primary bottom-[8rem] right-[3rem] border-3 border-green-500 p-[1rem]">
+                        <Check className="w-5 h-auto mx-2" /> {flash.success}
                     </div>
                 )}
                 {/* Pixel Clouds */}
@@ -155,9 +141,7 @@ const Show = ({ link }) => {
 
             {/* Main Container */}
             <div
-                className={`relative w-full max-w-2xl min-h-[400px] border-4 border-white backdrop-blur-[10.4px] bg-[#0000007a] p-8 text-white ${
-                    glitchEffect ? "translate-x-[2px]" : ""
-                } transition-transform duration-75`}
+                className={`relative w-full max-w-2xl min-h-[400px] border-4 border-white backdrop-blur-[10.4px] bg-[#0000007a] p-8 text-white transition-transform duration-75`}
                 style={{
                     imageRendering: "pixelated",
                     boxShadow: "8px 8px 0px 0px rgba(255,255,255,0.2)",
@@ -333,14 +317,36 @@ const Show = ({ link }) => {
                                     <span>{getRelativeTime(updated_at)}</span>
                                 </div>
 
-                                <div className="flex items-center gap-1">
-                                    {[...Array(5)].map((_, i) => (
-                                        <Star
-                                            key={i}
-                                            className="h-3 w-3 fill-[#FF00FF] text-[#FF00FF]"
-                                        />
-                                    ))}
-                                </div>
+                                <form className="flex items-center gap-1" onSubmit={HandleSubmitRating}>
+                                    {Array.from(
+                                        { length: 5 },
+                                        (_, index) => {
+                                            const starValue = index + 1;
+                                            return (
+                                                <Star
+                                                    key={starValue}
+                                                    size={24}
+                                                    className={`cursor-pointer transition-colors ${
+                                                        starValue <=
+                                                        (hover || rating)
+                                                            ? "fill-[#FF00FF]"
+                                                            : "fill-gray-400"
+                                                    }`}
+                                                    onClick={() => {
+                                                        HandleRating(starValue);
+                                                       ;
+                                                    }}
+                                                    onMouseEnter={() =>
+                                                        setHover(starValue)
+                                                    }
+                                                    onMouseLeave={() =>
+                                                        setHover(0)
+                                                    }
+                                                />
+                                            );
+                                        }
+                                    )}
+                                </form>
                             </div>
                         </div>
                     </div>

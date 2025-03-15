@@ -2,7 +2,7 @@ import { Heart, Youtube } from "lucide-react";
 
 export default function Footer() {
     return (
-        <footer className="font-Pixel capitalize border-t border-primary/20 py-4 mt-auto">
+        <footer className="font-Pixel bg-background capitalize border-t border-primary/20 py-4 mt-auto">
             <div className="text-center text-xs text-primary/50 space-y-2 my-2">
                 <div className="flex justify-center gap-4">
                     <a
