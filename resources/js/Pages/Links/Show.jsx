@@ -57,20 +57,21 @@ const Show = ({ link }) => {
     const { id, title, unlock_link, channel_link, description, updated_at } =
         link;
     const { flash } = usePage().props;
-    const [rating, setRating] = useState(link.rating);
+    const [rating, setRating] = useState(link.avg_rating);
     const [hover, setHover] = useState(0);
-    const {data,setData, post} = useForm({
+    const { data, setData, post } = useForm({
         rating: link.rating || 0,
-        link_id: link.id
-    })
-    // rating 
-    const HandleRating = (newRating)=> {
-        setRating(newRating)
-        setData({rating: newRating})
-    }
-    function HandleSubmitRating(e){
-        e.preventDefault()
-        post('/rating')
+        link_id: link.id,
+    });
+    console.log(link)
+    // rating
+    const HandleRating = (newRating) => {
+        setRating(newRating);
+        setData({ rating: newRating });
+    };
+    function HandleSubmitRating(e) {
+        e.preventDefault();
+        post("/rating");
     }
     // Countdown and blur handler
     useEffect(() => {
@@ -317,41 +318,38 @@ const Show = ({ link }) => {
                                     <span>{getRelativeTime(updated_at)}</span>
                                 </div>
 
-                                <form className="flex items-center gap-1" onSubmit={HandleSubmitRating}>
-                                    {Array.from(
-                                        { length: 5 },
-                                        (_, index) => {
-                                            const starValue = index + 1;
-                                            return (
+                                <form
+                                    className="flex items-center gap-1"
+                                    onSubmit={HandleSubmitRating}
+                                >
+                                    <span>{link.avg_rating} </span>
+                                    {Array.from({ length: 5 }, (_, index) => {
+                                        const starValue = index + 1;
+                                        return (
+                                            <button
+                                                key={starValue}
+                                                onClick={() =>
+                                                    HandleRating(starValue)
+                                                }
+                                                onMouseEnter={() =>
+                                                    setHover(starValue)
+                                                }
+                                                onMouseLeave={() => setHover(0)}
+                                                className="cursor-pointer transition-colors"
+                                            >
                                                 <Star
-                                                    key={starValue}
                                                     size={24}
-                                                    className={`cursor-pointer transition-colors ${
+                                                    className={`${
                                                         starValue <=
-                                                        (hover || rating)
+                                                        (hover ||
+                                                            Math.round(rating))
                                                             ? "fill-[#FF00FF]"
                                                             : "fill-gray-400"
                                                     }`}
-                                                    onClick={() => {
-                                                        HandleRating(starValue);
-                                                       ;
-                                                    }}
-                                                    onMouseEnter={() =>
-                                                        setHover(starValue)
-                                                    }
-                                                    onMouseLeave={() =>
-                                                        setHover(0)
-                                                    }
                                                 />
-                                            );
-                                        }
-                                    )}
-                                        <Button
-                                            type="submit"
-                                            className="ml-2 px-4 py-2 bg-[#FF00FF] text-white rounded-lg hover:bg-[#D400D4] transition"
-                                        >
-                                            Submit
-                                        </Button>
+                                            </button>
+                                        );
+                                    })}
                                 </form>
                             </div>
                         </div>
@@ -411,22 +409,6 @@ const Show = ({ link }) => {
                     </div>
                 )}
             </div>
-
-            <style jsx>{`
-                @keyframes twinkle {
-                    0%,
-                    100% {
-                        opacity: 0.3;
-                    }
-                    50% {
-                        opacity: 1;
-                    }
-                }
-
-                .animate-twinkle {
-                    animation: twinkle 3s ease-in-out infinite;
-                }
-            `}</style>
         </div>
     );
 };
