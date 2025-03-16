@@ -34,7 +34,6 @@ const LinksPage = ({ links }) => {
         title: "",
     });
     console.log(flash)
-    
     // Format date to a more readable format
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -72,14 +71,13 @@ const LinksPage = ({ links }) => {
     };
 
     return (
-        <div className="min-h-screen bg-background p-4 md:p-8 relative overflow-hidden">
+        <div className="min-h-screen bg-background/30 p-4 md:p-8 relative overflow-hidden">
             {/* Background Grid */}
             <div className="fixed inset-0 grid grid-cols-[repeat(20,1fr)] grid-rows-[repeat(20,1fr)] opacity-5 pointer-events-none">
                 {Array.from({ length: 400 }).map((_, i) => (
                     <div key={i} className="border border-primary"></div>
                 ))}
             </div>
-
             {/* Decorative Pixels */}
             <div className="fixed top-20 left-20 w-16 h-16 border-4 border-[#00FFFF]/20 animate-float opacity-20"></div>
             <div className="fixed bottom-40 right-20 w-12 h-12 border-4 border-[#FF00FF]/20 animate-float-delayed opacity-20"></div>

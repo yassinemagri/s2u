@@ -21,7 +21,6 @@ const LoginPage = () => {
         email: "",
         password: "",
     });
-    const [glitchEffect, setGlitchEffect] = useState(false);
     const [stars, setStars] = useState([]);
 
     // Generate stars for background
@@ -35,23 +34,13 @@ const LoginPage = () => {
         setStars(newStars);
     }, []);
 
-    // Random glitch effect
-    useEffect(() => {
-        const glitchInterval = setInterval(() => {
-            setGlitchEffect(true);
-            setTimeout(() => setGlitchEffect(false), 150);
-        }, 3000);
-
-        return () => clearInterval(glitchInterval);
-    }, []);
-
     const handleSubmit = (e) => {
         e.preventDefault();
         post("/login");
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4 relative overflow-hidden">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-[#FF00FF] p-4 relative overflow-hidden">
             {/* Background Effects */}
             <div className="absolute inset-0 bg-gradient-to-b from-background to-background/80 z-0">
                 {/* Stars */}
@@ -107,9 +96,7 @@ const LoginPage = () => {
 
             <div className="w-full max-w-md space-y-8 relative z-20">
                 <div
-                    className={`text-center space-y-2 ${
-                        glitchEffect ? "translate-x-[2px]" : ""
-                    } transition-transform duration-75`}
+                    className={`text-center space-y-2 transition-transform duration-75`}
                 >
                     <div className="flex justify-center">
                         <Badge
@@ -126,11 +113,6 @@ const LoginPage = () => {
                         style={{ textShadow: "3px 3px 0px #FF00FF" }}
                     >
                         Continue Your Quest
-                        {glitchEffect && (
-                            <span className="absolute inset-0 text-[#00FFFF] ml-[3px] mt-[2px] opacity-70">
-                                Continue Your Quest
-                            </span>
-                        )}
                     </h1>
 
                     <p className=" text-primary/70">Login to access your S2U Community</p>
@@ -145,11 +127,7 @@ const LoginPage = () => {
                     <div className="absolute -inset-1 bg-gradient-to-br from-[#FF00FF]/5 to-transparent rounded-sm opacity-50 blur-sm"></div>
 
                     <Card
-                        className={`rounded-none border-4 border-primary bg-background/90 backdrop-blur-sm p-6 ${
-                            glitchEffect
-                                ? "translate-x-[1px] translate-y-[1px]"
-                                : ""
-                        } transition-transform duration-75`}
+                        className={`rounded-none border-4 border-primary bg-background/90 backdrop-blur-sm p-6 transition-transform duration-75`}
                         style={{
                             boxShadow: "8px 8px 0px 0px rgba(255,0,255,0.3)",
                         }}
