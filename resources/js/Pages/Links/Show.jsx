@@ -346,6 +346,12 @@ const Show = ({ link }) => {
                                             );
                                         }
                                     )}
+                                        <Button
+                                            type="submit"
+                                            className="ml-2 px-4 py-2 bg-[#FF00FF] text-white rounded-lg hover:bg-[#D400D4] transition"
+                                        >
+                                            Submit
+                                        </Button>
                                 </form>
                             </div>
                         </div>
