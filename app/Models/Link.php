@@ -15,6 +15,10 @@ class Link extends Model
     function user():BelongsTo {
         return $this->belongsTo(User::class);
     }
+    function rating(int $number) {
+        $rating = Rating::firstOrCreate(["rating" => $number]);
+        return $this->ratings()->attach($rating);
+    }
     function ratings():BelongsToMany {
         return $this->BelongsToMany(Rating::class);
     }

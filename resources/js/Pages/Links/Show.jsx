@@ -63,11 +63,12 @@ const Show = ({ link }) => {
         rating: link.rating || 0,
         link_id: link.id,
     });
-    console.log(link)
+    console.log(data)
     // rating
     const HandleRating = (newRating) => {
         setRating(newRating);
-        setData({ rating: newRating });
+        // setData({...data, rating: newRating });
+        setData('rating',newRating);
     };
     function HandleSubmitRating(e) {
         e.preventDefault();

@@ -15,9 +15,10 @@ class RatingController extends Controller
     public function __invoke(Request $request)
     {
         $validated = $request->validate(["rating" => 'required|max:5|min:1']);
-        $rating = Rating::create($validated);
-        $link = Link::find($request->input('link_id')); 
-        if ($link) $link->ratings()->save($rating); 
+        // $rating = Rating::create($validated);
+        $link = Link::find($request->input('link_id'));
+        // dd($request->all());
+        if ($link) $link->rating($validated['rating']);
         else return back()->with('error','Something went wrong.');
         return back()->with('success','Thanks for rating.');
     }
