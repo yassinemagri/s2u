@@ -22,10 +22,10 @@ Route::fallback(function () {
 });
 
 // links routes
+Route::get('/link/{link}',[LinkController::class,'show']);
 Route::middleware("auth")->group(function() {
     Route::get('/my-links',[LinkController::class,'index'])->name('my-links');
     Route::get('/link/create',[LinkController::class,'create']);
-    Route::get('/link/{link}',[LinkController::class,'show'])->name('link.ed');
     Route::post('/link',[LinkController::class,'store']);
     Route::get('/link/{link}/edit',[LinkController::class,'edit']);
     Route::put('/link/{link}',[LinkController::class,'update']);
