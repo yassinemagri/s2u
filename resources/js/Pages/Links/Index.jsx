@@ -34,6 +34,7 @@ const LinksPage = ({ links }) => {
         title: "",
     });
     console.log(flash)
+    
     // Format date to a more readable format
     const formatDate = (dateString) => {
         const date = new Date(dateString);

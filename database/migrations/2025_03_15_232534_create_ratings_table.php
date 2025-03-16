@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->integer('rating')->nullable()->default(0);
+            $table->integer('rating')->default(0);
             $table->timestamps();
         });
     }
