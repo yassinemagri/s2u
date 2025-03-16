@@ -69,7 +69,7 @@ const Show = ({ link }) => {
         setData({rating: newRating})
     }
     function HandleSubmitRating(e){
-        e.preventDefualt()
+        e.preventDefault()
         post('/rating')
     }
     // Countdown and blur handler
