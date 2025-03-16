@@ -22,7 +22,6 @@ Route::fallback(function () {
 });
 
 // links routes
-Route::get('/link/{link}',[LinkController::class,'show']);
 Route::middleware("auth")->group(function() {
     Route::get('/my-links',[LinkController::class,'index'])->name('my-links');
     Route::get('/link/create',[LinkController::class,'create']);
@@ -33,6 +32,7 @@ Route::middleware("auth")->group(function() {
     // Storing a Rating 
     Route::post('/rating',RatingController::class);
 });
+Route::get('/link/{link}',[LinkController::class,'show']);
 
 require __DIR__.'/auth.php';
 
