@@ -15,10 +15,10 @@ class LinkController extends Controller
      */
     public function index(Request $request)
     {
-        // where('user_id', Auth::id())->
+        
         $query = Link::query();
         if ($request->filled('title')) $query->where('title',"LIKE","%{$request->title}%");
-        $links = $query->latest()->with('user:id,username')->paginate(7)->withQueryString();
+        $links = $query->latest()->where('user_id', Auth::id())->with('user:id,username')->paginate(7)->withQueryString();
         return Inertia::render('Links/Index',compact('links'));
     }
 
@@ -50,7 +50,7 @@ class LinkController extends Controller
      */
     public function show(Link $link)
     {
-        $link->loadMissing('user');
+        $link->loadMissing(['user','ratings']);
         return Inertia::render('Links/Show',compact("link"));
     }
 
