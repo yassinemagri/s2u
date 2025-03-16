@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 
 class Link extends Model
@@ -15,7 +16,7 @@ class Link extends Model
         return $this->belongsTo(User::class);
     }
     function ratings():BelongsToMany {
-        return $this->belongsToMany(Rating::class);
+        return $this->BelongsToMany(Rating::class);
     }
     protected $appends = ['avg_rating'];
     function getAvgRatingAttribute() {
