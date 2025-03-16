@@ -18,6 +18,5 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
         $rating = Rating::factory(5)->create();
         Link::factory(30)->hasAttached($rating)->create();
-
     }
 }

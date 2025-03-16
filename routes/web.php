@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\LegalController;
+use App\Http\Controllers\RatingController;
 
 Route::get('/', function () {
     $bg_img = asset('imgs/main-bg.png');
@@ -29,6 +30,8 @@ Route::middleware("auth")->group(function() {
     Route::get('/link/{link}/edit',[LinkController::class,'edit']);
     Route::put('/link/{link}',[LinkController::class,'update']);
     Route::delete('/link/{link}',[LinkController::class,'destroy']);
+    // Storing a Rating 
+    Route::post('/rating',RatingController::class);
 });
 
 require __DIR__.'/auth.php';
