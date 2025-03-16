@@ -14,7 +14,11 @@ class Link extends Model
     function user():BelongsTo {
         return $this->belongsTo(User::class);
     }
-    function rating():BelongsToMany {
+    function ratings():BelongsToMany {
         return $this->belongsToMany(Rating::class);
+    }
+    protected $appends = ['avg_rating'];
+    function getAvgRatingAttribute() {
+        return $this->ratings()->avg('rating') ?? 0;
     }
 }

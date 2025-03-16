@@ -33,7 +33,7 @@ const LinksPage = ({ links }) => {
     const { data, setData, get, processing, errors } = useForm({
         title: "",
     });
-    console.log(flash)
+    console.log(links.data[0])
     
     // Format date to a more readable format
     const formatDate = (dateString) => {
